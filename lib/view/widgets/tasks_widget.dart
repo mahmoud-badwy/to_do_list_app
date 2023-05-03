@@ -48,7 +48,8 @@ class TaskWidget extends StatelessWidget {
             ),
           );
         },
-        selector: (p0, tasksControllerObject) => tasksControllerObject.myTasks,
+        selector: (p0, tasksControllerObject) =>
+            tasksControllerObject.myTasks.reversed.toList(),
       ),
     );
   }

@@ -20,6 +20,19 @@ class MyHomePage extends StatelessWidget {
           },
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () =>
+            context.read<TasksController>().addTask('mahmoud', false),
+        backgroundColor: Colors.yellow[400],
+        tooltip: 'add tast',
+        elevation: 4,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: const Icon(
+          Icons.add,
+        ),
+      ),
     );
   }
 }
