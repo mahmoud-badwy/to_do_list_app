@@ -10,14 +10,22 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: ListView.builder(
-          physics: const BouncingScrollPhysics(),
-          padding: EdgeInsets.symmetric(
-              horizontal: MediaQuery.of(context).size.width / 20),
-          itemCount: context.watch<TasksController>().myTasks.length,
-          itemBuilder: (context, index) {
-            return TaskWidget(index: index);
+        child: Selector<TasksController, int>(
+          builder: (context, value, child) {
+            if (value != 0) {
+              return ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width / 20),
+                itemCount: value,
+                itemBuilder: (context, index) {
+                  return TaskWidget(index: index);
+                },
+              );
+            }
+            return const Center(child: Text('you have no tasks'));
           },
+          selector: (p0, p1) => p1.myTasks.length,
         ),
       ),
       floatingActionButton: FloatingActionButton(

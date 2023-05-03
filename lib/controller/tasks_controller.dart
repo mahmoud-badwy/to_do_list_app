@@ -11,7 +11,7 @@ class TasksController with ChangeNotifier {
 
   void addTask(String taskName, bool? isComplete) {
     myTasks.add([taskName, isComplete ?? false]);
-    print(myTasks.last);
+
     notifyListeners();
   }
 }
