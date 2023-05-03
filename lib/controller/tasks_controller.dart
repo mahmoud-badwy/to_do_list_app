@@ -1,15 +1,30 @@
 import 'package:flutter/material.dart';
 
 class TasksController with ChangeNotifier {
-  List<TaskWidget> myTasks = [const TaskWidget(taskName: 'name')];
-}
+  List myTasks = [
+    ['take a shower', true],
+    ['do homework', false],
+    ['take a shower', true],
+    ['do homework', false],
+    ['take a shower', true],
+    ['do homework', false],
+    ['take a shower', true],
+    ['do homework', false],
+    ['take a shower', true],
+    ['do homework', false],
+    ['take a shower', true],
+    ['do homework', false],
+    ['take a shower', true],
+    ['do homework', false],
+    ['take a shower', true],
+    ['do homework', false],
+    ['take a shower', true],
+    ['do homework', false],
+  ];
+ void  changeTaskStatue(bool? isComplete, int index) {
+    myTasks[index][1] = !myTasks[index][1];
 
-class TaskWidget extends StatelessWidget {
-  final String taskName;
-  const TaskWidget({super.key, required this.taskName});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(taskName);
+    notifyListeners();
   }
+
 }
