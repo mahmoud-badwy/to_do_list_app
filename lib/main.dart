@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:to_do_list_app/controller/tasks_controller.dart';
 import 'package:to_do_list_app/view/screens/home.dart';
 
 void main() {
@@ -14,9 +15,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: const [],
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => TasksController(),
+        )
+      ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
+          scaffoldBackgroundColor: Colors.yellow[200],
           primarySwatch: Colors.yellow,
         ),
         home: const MyHomePage(),
