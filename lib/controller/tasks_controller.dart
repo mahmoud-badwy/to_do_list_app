@@ -4,7 +4,7 @@ class TasksController with ChangeNotifier {
   List myTasks = [];
 
   void changeTaskStatue(bool? isComplete, int index) {
-    myTasks[index][1] = !myTasks[index][1];
+    myTasks[index][1] = isComplete;
 
     notifyListeners();
   }

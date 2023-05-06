@@ -15,8 +15,8 @@ class TaskWidget extends StatelessWidget {
       padding: const EdgeInsets.only(
         top: 25,
       ),
-      child: Selector<TasksController, List>(
-        builder: (selectContext, value, child) {
+      child: Consumer<TasksController>(
+        builder: (context, value, child) {
           return Card(
             color: Colors.yellow,
             shape: RoundedRectangleBorder(
@@ -24,11 +24,11 @@ class TaskWidget extends StatelessWidget {
             ),
             child: CheckboxListTile(
               title: Text(
-                value[index][0],
+                value.myTasks[index][0],
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w500,
-                  decoration: value[index][1]
+                  decoration: value.myTasks[index][1]
                       ? TextDecoration.lineThrough
                       : TextDecoration.none,
                 ),
@@ -41,14 +41,13 @@ class TaskWidget extends StatelessWidget {
                 right: 15,
               ),
               checkColor: Colors.green[900],
-              value: value[index][1],
+              value: value.myTasks[index][1],
               onChanged: (value) {
                 context.read<TasksController>().changeTaskStatue(value, index);
               },
             ),
           );
         },
-        selector: (p0, tasksControllerObject) => tasksControllerObject.myTasks,
       ),
     );
   }

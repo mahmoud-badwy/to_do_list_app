@@ -50,7 +50,9 @@ class MyHomePage extends StatelessWidget {
                 ),
                 actions: [
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     child: const Text('cancel'),
                   ),
                   ElevatedButton(
