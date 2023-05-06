@@ -51,6 +51,7 @@ class MyHomePage extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     TextField(
+                      autofocus: true,
                       controller:
                           context.watch<TasksController>().inputController,
                       decoration: const InputDecoration(
