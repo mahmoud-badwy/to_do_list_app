@@ -37,28 +37,35 @@ class MyHomePage extends StatelessWidget {
                 title: const Text('Add New Task'),
                 content: Column(
                   mainAxisSize: MainAxisSize.min,
-                  children: const [
+                  children: [
                     TextField(
-                      decoration: InputDecoration(
+                      controller:
+                          context.watch<TasksController>().inputController,
+                      decoration: const InputDecoration(
                         hintText: 'task',
                       ),
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 18,
                       ),
+                      onSubmitted: (value) {
+                        context
+                            .read<TasksController>()
+                            .addTask(taskName: value, context: context);
+                      },
                     ),
                   ],
                 ),
                 actions: [
                   ElevatedButton(
                     onPressed: () {
+                      context.read<TasksController>().inputController.clear();
                       Navigator.pop(context);
                     },
                     child: const Text('cancel'),
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      context.read<TasksController>().addTask('mahmoud', false);
-                      Navigator.pop(context);
+                      context.read<TasksController>().addTask(context: context);
                     },
                     child: const Text('add'),
                   ),
