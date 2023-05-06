@@ -23,7 +23,14 @@ class MyHomePage extends StatelessWidget {
                 },
               );
             }
-            return const Center(child: Text('you have no tasks'));
+            return const Center(
+              child: Text(
+                'you have no tasks',
+                style: TextStyle(
+                  fontSize: 30,
+                ),
+              ),
+            );
           },
           selector: (p0, p1) => p1.myTasks.length,
         ),
@@ -34,7 +41,12 @@ class MyHomePage extends StatelessWidget {
             context: context,
             builder: (context) {
               return AlertDialog(
-                title: const Text('Add New Task'),
+                title: const Text(
+                  'Add New Task',
+                  style: TextStyle(
+                    fontSize: 22,
+                  ),
+                ),
                 content: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -45,7 +57,7 @@ class MyHomePage extends StatelessWidget {
                         hintText: 'task',
                       ),
                       style: const TextStyle(
-                        fontSize: 18,
+                        fontSize: 20,
                       ),
                       onSubmitted: (value) {
                         context
@@ -61,13 +73,23 @@ class MyHomePage extends StatelessWidget {
                       context.read<TasksController>().inputController.clear();
                       Navigator.pop(context);
                     },
-                    child: const Text('cancel'),
+                    child: const Text(
+                      'cancel',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
                   ),
                   ElevatedButton(
                     onPressed: () {
                       context.read<TasksController>().addTask(context: context);
                     },
-                    child: const Text('add'),
+                    child: const Text(
+                      'add',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
                   ),
                 ],
               );

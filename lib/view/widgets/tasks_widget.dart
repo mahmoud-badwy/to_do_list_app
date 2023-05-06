@@ -26,7 +26,7 @@ class TaskWidget extends StatelessWidget {
               title: Text(
                 value.myTasks[index][0],
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 22,
                   fontWeight: FontWeight.w500,
                   decoration: value.myTasks[index][1]
                       ? TextDecoration.lineThrough

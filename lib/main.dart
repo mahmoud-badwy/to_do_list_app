@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+          fontFamily: 'Satisfy',
           scaffoldBackgroundColor: Colors.yellow[200],
           primarySwatch: Colors.yellow,
         ),
