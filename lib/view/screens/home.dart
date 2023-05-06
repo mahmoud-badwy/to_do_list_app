@@ -29,8 +29,42 @@ class MyHomePage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            context.read<TasksController>().addTask('mahmoud', false),
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: const Text('Add New Task'),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: const [
+                    TextField(
+                      decoration: InputDecoration(
+                        hintText: 'task',
+                      ),
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                  ],
+                ),
+                actions: [
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: const Text('cancel'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      context.read<TasksController>().addTask('mahmoud', false);
+                      Navigator.pop(context);
+                    },
+                    child: const Text('add'),
+                  ),
+                ],
+              );
+            },
+          );
+        },
         backgroundColor: Colors.yellow[400],
         tooltip: 'add tast',
         elevation: 4,
