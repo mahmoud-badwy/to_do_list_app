@@ -23,15 +23,21 @@ class TaskWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
             ),
             child: CheckboxListTile(
-              title: Text(
-                value.myTasks[index][0],
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w500,
-                  decoration: value.myTasks[index][1]
-                      ? TextDecoration.lineThrough
-                      : TextDecoration.none,
-                ),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    value.myTasks[index][0],
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w500,
+                      decoration: value.myTasks[index][1]
+                          ? TextDecoration.lineThrough
+                          : TextDecoration.none,
+                    ),
+                  ),
+                  value.myTasks[index][1] ? const Text('Done') : const Text(''),
+                ],
               ),
               checkboxShape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(4),
