@@ -5,8 +5,9 @@ class TasksController with ChangeNotifier {
   List<TaskModel> myTasks = [];
   TextEditingController inputController = TextEditingController();
 
-  void changeTaskStatue(bool? isComplete, int index) {
-    myTasks[index].statueBool = isComplete!;
+  void changeTaskStatue(bool isComplete, int index) {
+    myTasks[index].statueBool = isComplete;
+    myTasks[index].statue = isComplete ? 'done' : 'normal';
 
     notifyListeners();
   }

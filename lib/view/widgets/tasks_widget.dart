@@ -51,7 +51,7 @@ class TaskWidget extends StatelessWidget {
               checkColor: Colors.green[900],
               value: value.myTasks[index].statueBool,
               onChanged: (value) {
-                context.read<TasksController>().changeTaskStatue(value, index);
+                context.read<TasksController>().changeTaskStatue(value!, index);
               },
             ),
           );
