@@ -41,7 +41,7 @@ class MyBottomNavigatoinBar extends StatelessWidget {
             isSelected: context.watch<ToggleTabsController>().mytabs[2][1],
             isSelected2: context.watch<ToggleTabsController>().mytabs[2][2],
             icon: Icons.archive,
-            lebel: 'Arcive',
+            lebel: 'Archive',
             id: 2,
           ),
         ],

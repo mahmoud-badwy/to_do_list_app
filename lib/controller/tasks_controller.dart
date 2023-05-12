@@ -18,6 +18,7 @@ class TasksController with ChangeNotifier {
       allTasks[index].statue = isComplete ? 'done' : 'normal';
       if (allTasks[index].statue != 'normal') {
         doneTasks.add(allTasks[index]);
+        allTasks.remove(allTasks[index]);
       } else {
         doneTasks.remove(allTasks[index]);
       }
@@ -25,6 +26,7 @@ class TasksController with ChangeNotifier {
       doneTasks[index].statueBool = isComplete;
       doneTasks[index].statue = isComplete ? 'done' : 'normal';
       if (doneTasks[index].statue == 'normal') {
+        allTasks.add(doneTasks[index]);
         doneTasks.remove(doneTasks[index]);
       }
     } else if (list == 'archive') {
@@ -45,16 +47,17 @@ class TasksController with ChangeNotifier {
     String? taskName,
     required BuildContext context,
   }) {
-    allTasks.add(
-      TaskModel(
-        taskName: taskName ?? inputController.text,
-        statue: isCompleteC ? 'done' : 'normal',
-        id: 'fjghfjghjf',
-        statueBool: isCompleteC,
-      ),
-    );
     if (isCompleteC) {
       doneTasks.add(
+        TaskModel(
+          taskName: taskName ?? inputController.text,
+          statue: isCompleteC ? 'done' : 'normal',
+          id: 'fjghfjghjf',
+          statueBool: isCompleteC,
+        ),
+      );
+    } else {
+      allTasks.add(
         TaskModel(
           taskName: taskName ?? inputController.text,
           statue: isCompleteC ? 'done' : 'normal',
