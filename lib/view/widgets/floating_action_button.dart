@@ -9,7 +9,7 @@ class MyFloatingActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future<dynamic> _floatingActionOnTap(BuildContext context) {
+    Future<dynamic> floatingActionOnTap(BuildContext context) {
       return showDialog(
         context: context,
         builder: (context) {
@@ -72,7 +72,7 @@ class MyFloatingActionButton extends StatelessWidget {
 
     return FloatingActionButton(
       onPressed: () {
-        _floatingActionOnTap(context);
+        floatingActionOnTap(context);
       },
       backgroundColor: Colors.yellow[400],
       tooltip: 'add tast',
