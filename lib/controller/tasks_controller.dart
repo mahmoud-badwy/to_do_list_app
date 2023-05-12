@@ -1,23 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_list_app/model/task_model.dart';
 
 class TasksController with ChangeNotifier {
-  List myTasks = [];
+  List<TaskModel> myTasks = [];
   TextEditingController inputController = TextEditingController();
 
   void changeTaskStatue(bool? isComplete, int index) {
-    myTasks[index]['statue'] = isComplete;
+    myTasks[index].statueBool = isComplete!;
 
     notifyListeners();
   }
 
-  void addTask(
-      {String? taskName, bool? isComplete, required BuildContext context}) {
+  void addTask({
+    String? taskName,
+    bool isComplete = false,
+    required BuildContext context,
+  }) {
     myTasks.add(
-      {
-        'name': taskName ?? inputController.text,
-        'id': 2,
-        'statue': isComplete ?? false,
-      },
+      TaskModel(
+        taskName: taskName ?? inputController.text,
+        statue: isComplete ? 'done' : 'normal',
+        id: 'fjghfjghjf',
+        statueBool: isComplete,
+      ),
     );
     inputController.clear();
     Navigator.pop(context);

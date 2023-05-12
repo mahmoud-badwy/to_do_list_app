@@ -12,14 +12,14 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Selector<TasksController, int>(
+        child: Consumer<TasksController>(
           builder: (context, value, child) {
-            if (value != 0) {
+            if (value.myTasks.isNotEmpty) {
               return ListView.builder(
                 physics: const BouncingScrollPhysics(),
                 padding: EdgeInsets.symmetric(
                     horizontal: MediaQuery.of(context).size.width / 20),
-                itemCount: value,
+                itemCount: value.myTasks.length,
                 itemBuilder: (context, index) {
                   return TaskWidget(index: index);
                 },
@@ -34,7 +34,6 @@ class MyHomePage extends StatelessWidget {
               ),
             );
           },
-          selector: (p0, p1) => p1.myTasks.length,
         ),
       ),
       floatingActionButton: const MyFloatingActionButton(),

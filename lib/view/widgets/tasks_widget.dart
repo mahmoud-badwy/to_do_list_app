@@ -27,16 +27,16 @@ class TaskWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    value.myTasks[index]['name'],
+                    value.myTasks[index].taskName,
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w500,
-                      decoration: value.myTasks[index]['statue']
+                      decoration: value.myTasks[index].statueBool
                           ? TextDecoration.lineThrough
                           : TextDecoration.none,
                     ),
                   ),
-                  value.myTasks[index]['statue']
+                  value.myTasks[index].statue == 'done'
                       ? const Text('Done')
                       : const Text(''),
                 ],
@@ -49,7 +49,7 @@ class TaskWidget extends StatelessWidget {
                 right: 15,
               ),
               checkColor: Colors.green[900],
-              value: value.myTasks[index]['statue'],
+              value: value.myTasks[index].statueBool,
               onChanged: (value) {
                 context.read<TasksController>().changeTaskStatue(value, index);
               },

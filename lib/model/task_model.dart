@@ -1,5 +1,10 @@
 class TaskModel {
-  final String taskName, statue, id;
+  String taskName, statue, id;
+  bool statueBool;
 
-  TaskModel({required this.taskName, required this.statue, required this.id});
+  TaskModel(
+      {required this.statueBool,
+      required this.taskName,
+      required this.statue,
+      required this.id});
 }
