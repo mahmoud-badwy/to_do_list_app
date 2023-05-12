@@ -27,16 +27,18 @@ class TaskWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    value.myTasks[index][0],
+                    value.myTasks[index]['name'],
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w500,
-                      decoration: value.myTasks[index][1]
+                      decoration: value.myTasks[index]['statue']
                           ? TextDecoration.lineThrough
                           : TextDecoration.none,
                     ),
                   ),
-                  value.myTasks[index][1] ? const Text('Done') : const Text(''),
+                  value.myTasks[index]['statue']
+                      ? const Text('Done')
+                      : const Text(''),
                 ],
               ),
               checkboxShape: RoundedRectangleBorder(
@@ -47,7 +49,7 @@ class TaskWidget extends StatelessWidget {
                 right: 15,
               ),
               checkColor: Colors.green[900],
-              value: value.myTasks[index][1],
+              value: value.myTasks[index]['statue'],
               onChanged: (value) {
                 context.read<TasksController>().changeTaskStatue(value, index);
               },
