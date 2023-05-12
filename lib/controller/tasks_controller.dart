@@ -6,6 +6,11 @@ class TasksController with ChangeNotifier {
   List<TaskModel> doneTasks = [];
   List<TaskModel> archiveTasks = [];
   TextEditingController inputController = TextEditingController();
+  bool isCompleteC = false;
+  void onChangeisCompleteC(bool newValue) {
+    isCompleteC = newValue;
+    notifyListeners();
+  }
 
   void changeTaskStatue(bool isComplete, int index, String list) {
     if (list == 'all') {
@@ -30,20 +35,36 @@ class TasksController with ChangeNotifier {
     notifyListeners();
   }
 
+  void onCancel(context) {
+    inputController.clear();
+    isCompleteC = false;
+    Navigator.pop(context);
+  }
+
   void addTask({
     String? taskName,
-    bool isComplete = false,
     required BuildContext context,
   }) {
     allTasks.add(
       TaskModel(
         taskName: taskName ?? inputController.text,
-        statue: isComplete ? 'done' : 'normal',
+        statue: isCompleteC ? 'done' : 'normal',
         id: 'fjghfjghjf',
-        statueBool: isComplete,
+        statueBool: isCompleteC,
       ),
     );
+    if (isCompleteC) {
+      doneTasks.add(
+        TaskModel(
+          taskName: taskName ?? inputController.text,
+          statue: isCompleteC ? 'done' : 'normal',
+          id: 'fjghfjghjf',
+          statueBool: isCompleteC,
+        ),
+      );
+    }
     inputController.clear();
+    isCompleteC = false;
     Navigator.pop(context);
     notifyListeners();
   }

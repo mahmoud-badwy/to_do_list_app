@@ -33,18 +33,25 @@ class MyFloatingActionButton extends StatelessWidget {
                     fontSize: 20,
                   ),
                   onSubmitted: (value) {
-                    context
-                        .read<TasksController>()
-                        .addTask(taskName: value, context: context);
+                    context.read<TasksController>().addTask(
+                          taskName: value,
+                          context: context,
+                        );
                   },
+                ),
+                CheckboxListTile(
+                  value: context.watch<TasksController>().isCompleteC,
+                  onChanged: (value) => context
+                      .read<TasksController>()
+                      .onChangeisCompleteC(value!),
+                  title: const Text('mark as read'),
                 ),
               ],
             ),
             actions: [
               ElevatedButton(
                 onPressed: () {
-                  context.read<TasksController>().inputController.clear();
-                  Navigator.pop(context);
+                  context.read<TasksController>().onCancel(context);
                 },
                 child: const Text(
                   'cancel',
@@ -55,7 +62,9 @@ class MyFloatingActionButton extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  context.read<TasksController>().addTask(context: context);
+                  context.read<TasksController>().addTask(
+                        context: context,
+                      );
                 },
                 child: const Text(
                   'add',
