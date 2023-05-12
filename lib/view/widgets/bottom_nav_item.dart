@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_list_app/controller/toggle_tabs.dart';
+import 'package:to_do_list_app/helper/mediaquery.dart';
 
-class BottomNaviagtionBarItem extends StatelessWidget {
-  const BottomNaviagtionBarItem({
+class MyBottomNaviagtionBarItem extends StatelessWidget {
+  const MyBottomNaviagtionBarItem({
     super.key,
     this.isSelected,
     required this.icon,
     required this.lebel,
     required this.id,
+    this.isSelected2,
   });
   final bool? isSelected;
+  final bool? isSelected2;
   final IconData icon;
   final String lebel;
   final int id;
@@ -25,8 +28,11 @@ class BottomNaviagtionBarItem extends StatelessWidget {
         ),
         padding: const EdgeInsets.all(10),
         // height: 60,
-        duration: const Duration(milliseconds: 10000),
+        duration: const Duration(milliseconds: 200),
+        width: isSelected! ? context.getWidth() / 4.5 : context.getWidth() / 9,
         child: Row(
+          // mainAxisAlignment:
+          //     isSelected! ? MainAxisAlignment.start : MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
             Icon(
@@ -34,8 +40,9 @@ class BottomNaviagtionBarItem extends StatelessWidget {
               size: 27,
             ),
             Visibility(
-              visible: isSelected!,
+              visible: isSelected2!,
               child: Row(
+                // mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const SizedBox(
