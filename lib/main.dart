@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_list_app/controller/tasks_controller.dart';
+import 'package:to_do_list_app/controller/toggle_tabs.dart';
 import 'package:to_do_list_app/view/screens/home.dart';
 
 void main() {
@@ -18,6 +19,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (context) => TasksController(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ToggleTabsController(),
         )
       ],
       child: MaterialApp(
