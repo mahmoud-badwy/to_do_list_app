@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:to_do_list_app/controller/tasks_controller.dart';
-import 'package:to_do_list_app/controller/toggle_tabs.dart';
+import 'package:to_do_list_app/constants/controllers.dart';
+import 'package:to_do_list_app/constants/theme.dart';
 import 'package:to_do_list_app/view/screens/home.dart';
 
 void main() {
@@ -16,21 +16,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (context) => TasksController(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => ToggleTabsController(),
-        )
-      ],
+      providers: myControllers(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          fontFamily: 'Satisfy',
-          scaffoldBackgroundColor: Colors.yellow[200],
-          primarySwatch: Colors.yellow,
-        ),
+        theme: myThemeData(),
         home: const MyHomePage(),
       ),
     );
