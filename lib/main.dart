@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_list_app/constants/controllers.dart';
+import 'package:to_do_list_app/constants/routes.dart';
 import 'package:to_do_list_app/constants/theme.dart';
-import 'package:to_do_list_app/view/screens/home.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -27,7 +27,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: myThemeData(),
-        home: const MyHomePage(),
+        initialRoute: myinitialRoute,
+        routes: myRoutes(),
       ),
     );
   }

@@ -5,6 +5,7 @@ import 'package:to_do_list_app/view/widgets/floating_action_button.dart';
 import 'package:to_do_list_app/view/widgets/my_nav_bar.dart';
 
 class MyHomePage extends StatelessWidget {
+  static const String pageRoute= 'home_page';
   const MyHomePage({super.key});
 
   @override
