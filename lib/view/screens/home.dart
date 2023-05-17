@@ -10,6 +10,30 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        leading: const InkWell(
+          // onTap: () => null,
+          child: Hero(
+            tag: 'profile',
+            child: CircleAvatar(
+              child: Icon(
+                Icons.person,
+                size: 35,
+              ),
+            ),
+          ),
+        ),
+        title: const Text('You Can Do it !'),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.more_vert),
+            highlightColor: Colors.transparent,
+            splashColor: Colors.transparent,
+          ),
+        ],
+      ),
       body: SafeArea(
         child: context
             .watch<ToggleTabsController>()
