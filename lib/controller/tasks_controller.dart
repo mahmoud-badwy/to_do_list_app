@@ -48,23 +48,31 @@ class TasksController with ChangeNotifier {
     required BuildContext context,
   }) {
     if (isCompleteC) {
-      doneTasks.add(
-        TaskModel(
-          taskName: taskName ?? inputController.text,
-          statue: isCompleteC ? 'done' : 'normal',
-          id: 'fjghfjghjf',
-          statueBool: isCompleteC,
-        ),
-      );
+      if (inputController.text.isNotEmpty) {
+        doneTasks.add(
+          TaskModel(
+            taskName: taskName ?? inputController.text,
+            statue: isCompleteC ? 'done' : 'normal',
+            id: 'fjghfjghjf',
+            statueBool: isCompleteC,
+          ),
+        );
+      } else {
+        print('empty');
+      }
     } else {
-      allTasks.add(
-        TaskModel(
-          taskName: taskName ?? inputController.text,
-          statue: isCompleteC ? 'done' : 'normal',
-          id: 'fjghfjghjf',
-          statueBool: isCompleteC,
-        ),
-      );
+      if (inputController.text.isNotEmpty) {
+        allTasks.add(
+          TaskModel(
+            taskName: taskName ?? inputController.text,
+            statue: isCompleteC ? 'done' : 'normal',
+            id: 'fjghfjghjf',
+            statueBool: isCompleteC,
+          ),
+        );
+      } else {
+        print('empty');
+      }
     }
     inputController.clear();
     isCompleteC = false;
