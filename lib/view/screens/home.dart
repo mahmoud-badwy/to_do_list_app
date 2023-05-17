@@ -14,13 +14,16 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        leading: InkWell(
-          onTap: () => Navigator.pushNamed(context, ProfilePage.pageRoute),
-          child: Hero(
-            tag: 'profile',
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(60),
-              child: Image.asset('assets/me.jpg',fit: BoxFit.cover,),
+        leading: Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: InkWell(
+            onTap: () => Navigator.pushNamed(context, ProfilePage.pageRoute),
+            child: Hero(
+              tag: 'profile',
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(60),
+                child: Image.asset('assets/me.jpg',fit: BoxFit.cover,),
+              ),
             ),
           ),
         ),
