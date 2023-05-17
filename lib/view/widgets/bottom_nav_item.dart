@@ -27,7 +27,6 @@ class MyBottomNaviagtionBarItem extends StatelessWidget {
           color: Colors.yellow[400],
         ),
         padding: const EdgeInsets.all(10),
-        // height: 60,
         duration: const Duration(milliseconds: 200),
         width: isSelected! ? context.getWidth() / 4 : context.getWidth() / 9.5,
         child: Row(
