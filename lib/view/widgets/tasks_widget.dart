@@ -29,14 +29,16 @@ class TaskWidget extends StatelessWidget {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                tasks[index].taskName,
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w500,
-                  decoration: tasks[index].statueBool
-                      ? TextDecoration.lineThrough
-                      : TextDecoration.none,
+              Flexible(
+                child: Text(
+                  tasks[index].taskName,
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w500,
+                    decoration: tasks[index].statueBool
+                        ? TextDecoration.lineThrough
+                        : TextDecoration.none,
+                  ),
                 ),
               ),
               tasks[index].statue == 'done'

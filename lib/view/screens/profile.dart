@@ -14,7 +14,7 @@ class ProfilePage extends StatelessWidget {
           IconButton(
               onPressed: () {},
               icon: const Icon(Icons.logout_rounded),
-              tooltip: 'logout'),
+              tooltip: 'logout',),
         ],
       ),
       body: const Center(
