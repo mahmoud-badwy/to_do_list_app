@@ -30,8 +30,9 @@ class TasksController with ChangeNotifier {
         doneTasks.remove(doneTasks[index]);
       }
     } else if (list == 'archive') {
-      archiveTasks[index].statueBool = isComplete;
-      archiveTasks[index].statue = isComplete ? 'done' : 'normal';
+      // archiveTasks[index].statueBool = isComplete;
+        print(archiveTasks[index].statueBool);
+       archiveTasks[index].statue = archiveTasks[index].statueBool ? 'done' : 'normal';
       if (archiveTasks[index].statue == 'normal') {
         allTasks.add(archiveTasks[index]);
         archiveTasks.remove(archiveTasks[index]);
@@ -74,10 +75,7 @@ class TasksController with ChangeNotifier {
     Navigator.pop(context);
   }
 
-  void addTask({
-    String? taskName,
-    required BuildContext context,
-  }) {
+  void addTask({String? taskName, required BuildContext context}) {
     if (isCompleteC) {
       if (inputController.text.isNotEmpty) {
         doneTasks.add(
