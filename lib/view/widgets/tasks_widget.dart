@@ -38,7 +38,9 @@ class TaskWidget extends StatelessWidget {
               width: 5,
             ),
             SlidableAction(
-              onPressed: (context) {},
+              onPressed: (p1) {
+                context.read<TasksController>().addToArchive(index, list);
+              },
               borderRadius: BorderRadius.circular(20),
               backgroundColor: Colors.green[200]!,
               foregroundColor: Colors.white,

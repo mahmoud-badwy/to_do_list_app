@@ -22,7 +22,8 @@ class TasksController with ChangeNotifier {
       } else {
         doneTasks.remove(allTasks[index]);
       }
-    } else if (list == 'done') {
+    }
+    else if (list == 'done') {
       doneTasks[index].statueBool = isComplete;
       doneTasks[index].statue = isComplete ? 'done' : 'normal';
       if (doneTasks[index].statue == 'normal') {
@@ -32,8 +33,28 @@ class TasksController with ChangeNotifier {
     } else if (list == 'archive') {
       archiveTasks[index].statueBool = isComplete;
       archiveTasks[index].statue = isComplete ? 'done' : 'normal';
+      if (archiveTasks[index].statue == 'normal') {
+        allTasks.add(archiveTasks[index]);
+        archiveTasks.remove(archiveTasks[index]);
+      } else if (archiveTasks[index].statue == 'done') {
+        doneTasks.add(archiveTasks[index]);
+        archiveTasks.remove(archiveTasks[index]);
+      }
     }
 
+    notifyListeners();
+  }
+
+  void addToArchive(int index, String list) {
+    if (list == 'all') {
+      allTasks[index].statue = 'archive';
+      archiveTasks.add(allTasks[index]);
+      allTasks.remove(allTasks[index]);
+    } else if (list == 'done') {
+      doneTasks[index].statue = 'archive';
+      archiveTasks.add(doneTasks[index]);
+      doneTasks.remove(doneTasks[index]);
+    }
     notifyListeners();
   }
 
