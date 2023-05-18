@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:to_do_list_app/helper/mediaquery.dart';
 
@@ -14,14 +14,14 @@ class ProfilePage extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {},
-              icon: const  Icon(Icons.logout_rounded),
+              icon: const Icon(Icons.logout_rounded),
               tooltip: 'logout'),
         ],
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [const  Spacer(flex: 2,),
             Hero(
               tag: 'profile',
               child: SizedBox(
@@ -35,6 +35,8 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
               ),
+            ),  SizedBox(
+              height: context.getHeight() / 50,
             ),
             const Text(
               'Mahmoud Badwy',
@@ -44,50 +46,64 @@ class ProfilePage extends StatelessWidget {
                 letterSpacing: 1.4,
               ),
             ),
-            // SizedBox(height: context.getHeight()/ 15,),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'make voice on done task',
-                    style: TextStyle(
-                      fontSize: 18,
+
+            const  Spacer(flex: 1,),
+            SwitchListTile(
+              activeTrackColor: Colors.green[200],
+              activeColor: Colors.black,
+              title: const Text(
+                'make voice on done task',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 1,
+                ),
+              ),
+              value: true,
+              onChanged: (newValue) {},
+            ),
+            SwitchListTile(
+              activeTrackColor: Colors.green[200],
+              activeColor: Colors.black,
+              value: true,
+              title: const Text(
+                'sync your Data',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 1,
+                ),
+              ),
+              onChanged: (newValue) {},
+            ),
+            const  Spacer(),
+            Text.rich(
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.normal,
+
+              ),
+              textAlign: TextAlign.start,
+              TextSpan(
+                text: 'This App make by ',
+                children: <TextSpan>[
+                  TextSpan(
+                    text: 'Mahmoud Badwy',
+                    style: const TextStyle(
                       fontWeight: FontWeight.w600,
-                      letterSpacing: 1,
+                      decoration: TextDecoration.underline,
                     ),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        // code to open / launch terms of service link here
+                      },
                   ),
-                  CupertinoSwitch(
-                    value: true,
-                    onChanged: (newValue) {},
-                  ),
+
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'sync your Data',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 1,
-                    ),
-                  ),
-                  CupertinoSwitch(
-                    value: true,
-                    onChanged: (newValue) {},
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: context.getHeight() / 20,
-            ),
+
+            const Spacer(flex: 1,),
           ],
         ),
       ),
