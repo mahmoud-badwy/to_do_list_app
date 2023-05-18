@@ -22,13 +22,14 @@ class TaskWidget extends StatelessWidget {
         top: 25,
       ),
       child: Slidable(
-
         startActionPane: ActionPane(
           motion: const BehindMotion(),
           children: [
             SlidableAction(
               borderRadius: BorderRadius.circular(20),
-              onPressed: (context) {},
+              onPressed: (p1) {
+                context.read<TasksController>().delete(index, list);
+              },
               backgroundColor: const Color(0xFFFE4A49),
               foregroundColor: Colors.white,
               icon: Icons.delete,
@@ -53,13 +54,11 @@ class TaskWidget extends StatelessWidget {
           extentRatio: 0.25,
           motion: const ScrollMotion(),
           children: [
-
             SlidableAction(
-
               onPressed: (context) {},
               spacing: 0.5,
               borderRadius: BorderRadius.circular(20),
-              backgroundColor: const  Color(0xFF0392CF),
+              backgroundColor: const Color(0xFF0392CF),
               foregroundColor: Colors.white,
               icon: Icons.share,
               label: 'Share',

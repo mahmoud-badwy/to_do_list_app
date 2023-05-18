@@ -22,8 +22,7 @@ class TasksController with ChangeNotifier {
       } else {
         doneTasks.remove(allTasks[index]);
       }
-    }
-    else if (list == 'done') {
+    } else if (list == 'done') {
       doneTasks[index].statueBool = isComplete;
       doneTasks[index].statue = isComplete ? 'done' : 'normal';
       if (doneTasks[index].statue == 'normal') {
@@ -54,6 +53,17 @@ class TasksController with ChangeNotifier {
       doneTasks[index].statue = 'archive';
       archiveTasks.add(doneTasks[index]);
       doneTasks.remove(doneTasks[index]);
+    }
+    notifyListeners();
+  }
+
+  void delete(int index, String list) {
+    if (list == 'all') {
+      allTasks.remove(allTasks[index]);
+    } else if (list == 'done') {
+      doneTasks.remove(doneTasks[index]);
+    } else if (list == 'archive') {
+      archiveTasks.remove(archiveTasks[index]);
     }
     notifyListeners();
   }
