@@ -12,9 +12,10 @@ class ProfilePage extends StatelessWidget {
       appBar: AppBar(
         actions: [
           IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.logout_rounded),
-              tooltip: 'logout',),
+            onPressed: () {},
+            icon: const Icon(Icons.logout_rounded),
+            tooltip: 'logout',
+          ),
         ],
       ),
       body: const Center(
@@ -23,5 +24,3 @@ class ProfilePage extends StatelessWidget {
     );
   }
 }
-
-
