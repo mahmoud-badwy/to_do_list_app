@@ -22,7 +22,10 @@ class MyHomePage extends StatelessWidget {
               tag: 'profile',
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(60),
-                child: Image.asset('assets/me.jpg',fit: BoxFit.cover,),
+                child: Image.asset(
+                  'assets/me.jpg',
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
