@@ -17,37 +17,37 @@ class TasksController with ChangeNotifier {
     notifyListeners();
   }
 
-  void changeTaskStatue(bool isComplete, int index) async {
+  void changeTaskStatue(bool isComplete, int index, int id) async {
     if (allTasks[index]['typeDone'] == 'done') {
-      mySqlDb.updateData(
+      await mySqlDb.updateData(
         'notes',
         {'typeDone': 'notDone'},
-        index,
+        id,
       );
     } else {
-      
-      mySqlDb.updateData(
+      await mySqlDb.updateData(
         'notes',
         {'typeDone': 'done'},
-        index,
+        id,
       );
     }
-    getData();
+    await getData();
+    print(allTasks);
     notifyListeners();
   }
 
-  void addToArchive(int index) {
+  void addToArchive(int id) {
     mySqlDb.updateData(
         'notes',
         {
           'kind': 'archive',
         },
-        index);
+        id);
     notifyListeners();
   }
 
-  void delete(int index) {
-    mySqlDb.deleteData('notes', index);
+  void delete(int id) {
+    mySqlDb.deleteData('notes', id);
     getData();
     notifyListeners();
   }

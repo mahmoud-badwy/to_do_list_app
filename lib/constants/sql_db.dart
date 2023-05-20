@@ -44,13 +44,13 @@ class MySqlDb {
 
   updateData(String table, Map<String, Object?> values, int id) async {
     Database? myDb = await database;
-    int response = await myDb.update(table, values, where: "id = ${id + 1}");
+    int response = await myDb.update(table, values, where: "id = $id");
     return response;
   }
 
   deleteData(String table, int id) async {
     Database? myDb = await database;
-    int response = await myDb.delete(table, where: "id = ${id + 1}");
+    int response = await myDb.delete(table, where: "id = $id");
     return response;
   }
 }

@@ -25,7 +25,7 @@ class TaskWidget extends StatelessWidget {
             SlidableAction(
               borderRadius: BorderRadius.circular(20),
               onPressed: (p1) {
-                context.read<TasksController>().delete(index);
+                context.read<TasksController>().delete(tasks[index]['id']);
               },
               backgroundColor: const Color(0xFFFE4A49),
               foregroundColor: Colors.white,
@@ -37,7 +37,9 @@ class TaskWidget extends StatelessWidget {
             ),
             SlidableAction(
               onPressed: (p1) {
-                context.read<TasksController>().addToArchive(index);
+                context
+                    .read<TasksController>()
+                    .addToArchive(tasks[index]['id']);
               },
               borderRadius: BorderRadius.circular(20),
               backgroundColor: Colors.green[200]!,
@@ -98,7 +100,9 @@ class TaskWidget extends StatelessWidget {
             checkColor: Colors.green[900],
             value: tasks[index]['typeDone'] == 'done',
             onChanged: (value) {
-              context.read<TasksController>().changeTaskStatue(value!, index);
+              context
+                  .read<TasksController>()
+                  .changeTaskStatue(value!, index, tasks[index]['id']);
             },
           ),
         ),
