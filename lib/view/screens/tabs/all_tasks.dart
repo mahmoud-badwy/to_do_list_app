@@ -17,11 +17,8 @@ class AllTasks extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: context.getWidth() / 20),
             itemCount: value.allTasks.length,
             itemBuilder: (context, index) {
-              if (context.watch<TasksController>().allTasks[index].statue ==
-                  'archive') {
-                return null;
-              }
-              return TaskWidget(index: index, tasks: value.allTasks, list: 'all',);
+             
+              return TaskWidget(index: index, tasks: value.allTasks,);
             },
           );
         }

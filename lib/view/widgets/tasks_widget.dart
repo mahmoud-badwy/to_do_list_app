@@ -2,17 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_list_app/controller/tasks_controller.dart';
-import 'package:to_do_list_app/model/task_model.dart';
 
 class TaskWidget extends StatelessWidget {
   final int index;
-  final String list;
-  final List<TaskModel> tasks;
+  final List<Map> tasks;
   const TaskWidget({
     super.key,
     required this.index,
     required this.tasks,
-    required this.list,
   });
 
   @override
@@ -28,7 +25,7 @@ class TaskWidget extends StatelessWidget {
             SlidableAction(
               borderRadius: BorderRadius.circular(20),
               onPressed: (p1) {
-                context.read<TasksController>().delete(index, list);
+                context.read<TasksController>().delete(index);
               },
               backgroundColor: const Color(0xFFFE4A49),
               foregroundColor: Colors.white,
@@ -40,7 +37,7 @@ class TaskWidget extends StatelessWidget {
             ),
             SlidableAction(
               onPressed: (p1) {
-                context.read<TasksController>().addToArchive(index, list);
+                context.read<TasksController>().addToArchive(index);
               },
               borderRadius: BorderRadius.circular(20),
               backgroundColor: Colors.green[200]!,
@@ -76,17 +73,17 @@ class TaskWidget extends StatelessWidget {
               children: [
                 Flexible(
                   child: Text(
-                    tasks[index].taskName,
+                    "${tasks[index]['note']}",
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w500,
-                      decoration: tasks[index].statueBool
+                      decoration: tasks[index]['typeDone'] == 'done'
                           ? TextDecoration.lineThrough
                           : TextDecoration.none,
                     ),
                   ),
                 ),
-                tasks[index].statue == 'done'
+                tasks[index]['typeDone'] == 'done'
                     ? const Text('Done')
                     : const Text(''),
               ],
@@ -99,11 +96,9 @@ class TaskWidget extends StatelessWidget {
               right: 15,
             ),
             checkColor: Colors.green[900],
-            value: tasks[index].statueBool,
+            value: tasks[index]['typeDone'] == 'done',
             onChanged: (value) {
-              context
-                  .read<TasksController>()
-                  .changeTaskStatue(value!, index, list);
+              context.read<TasksController>().changeTaskStatue(value!, index);
             },
           ),
         ),

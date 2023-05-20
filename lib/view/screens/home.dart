@@ -1,13 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:to_do_list_app/controller/tasks_controller.dart';
 import 'package:to_do_list_app/controller/toggle_tabs.dart';
 import 'package:to_do_list_app/view/screens/profile.dart';
 import 'package:to_do_list_app/view/widgets/floating_action_button.dart';
 import 'package:to_do_list_app/view/widgets/my_nav_bar.dart';
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   static const String pageRoute = 'home_page';
   const MyHomePage({super.key});
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  void initState() {
+    Future.delayed(
+      Duration.zero,
+      () {
+        context.read<TasksController>().getData();
+      },
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

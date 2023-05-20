@@ -12,6 +12,7 @@ void main() {
       statusBarIconBrightness: Brightness.dark,
     ),
   );
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
     const MyApp(),
   );

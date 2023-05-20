@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_list_app/constants/sql_db.dart';
-import 'package:to_do_list_app/model/task_model.dart';
 
 class TasksController with ChangeNotifier {
   MySqlDb mySqlDb = MySqlDb();
-  List<TaskModel> allTasks = [];
-  List<TaskModel> doneTasks = [];
-  List<TaskModel> archiveTasks = [];
+  List<Map> allTasks = [];
   TextEditingController inputController = TextEditingController();
   bool isCompleteC = false;
   void onChangeisCompleteC(bool newValue) {
@@ -15,67 +12,43 @@ class TasksController with ChangeNotifier {
   }
 
   Future<void> getData() async {
-    Future<List<Map<String, Object?>>> response =
-        await mySqlDb.readData('notes');
-    // allTasks = await response;
-  }
-
-  void changeTaskStatue(bool isComplete, int index, String list) {
-    if (list == 'all') {
-      allTasks[index].statueBool = isComplete;
-      allTasks[index].statue = isComplete ? 'done' : 'normal';
-      if (allTasks[index].statue != 'normal') {
-        doneTasks.add(allTasks[index]);
-        allTasks.remove(allTasks[index]);
-      } else {
-        doneTasks.remove(allTasks[index]);
-      }
-    } else if (list == 'done') {
-      doneTasks[index].statueBool = isComplete;
-      doneTasks[index].statue = isComplete ? 'done' : 'normal';
-      if (doneTasks[index].statue == 'normal') {
-        allTasks.add(doneTasks[index]);
-        doneTasks.remove(doneTasks[index]);
-      }
-    } else if (list == 'archive') {
-      // archiveTasks[index].statueBool = isComplete;
-      archiveTasks[index].statue =
-          archiveTasks[index]
-          .statueBool ? 'done' 
-          : 'normal';
-      if (archiveTasks[index].statue == 'normal') {
-        allTasks.add(archiveTasks[index]);
-        archiveTasks.remove(archiveTasks[index]);
-      } else if (archiveTasks[index].statue == 'done') {
-        doneTasks.add(archiveTasks[index]);
-        archiveTasks.remove(archiveTasks[index]);
-      }
-    }
-
+    Future<List<Map>> response = mySqlDb.readData('notes');
+    allTasks = await response;
     notifyListeners();
   }
 
-  void addToArchive(int index, String list) {
-    if (list == 'all') {
-      allTasks[index].statue = 'archive';
-      archiveTasks.add(allTasks[index]);
-      allTasks.remove(allTasks[index]);
-    } else if (list == 'done') {
-      doneTasks[index].statue = 'archive';
-      archiveTasks.add(doneTasks[index]);
-      doneTasks.remove(doneTasks[index]);
+  void changeTaskStatue(bool isComplete, int index) async {
+    if (allTasks[index]['typeDone'] == 'done') {
+      mySqlDb.updateData(
+        'notes',
+        {'typeDone': 'notDone'},
+        index,
+      );
+    } else {
+      
+      mySqlDb.updateData(
+        'notes',
+        {'typeDone': 'done'},
+        index,
+      );
     }
+    getData();
     notifyListeners();
   }
 
-  void delete(int index, String list) {
-    if (list == 'all') {
-      allTasks.remove(allTasks[index]);
-    } else if (list == 'done') {
-      doneTasks.remove(doneTasks[index]);
-    } else if (list == 'archive') {
-      archiveTasks.remove(archiveTasks[index]);
-    }
+  void addToArchive(int index) {
+    mySqlDb.updateData(
+        'notes',
+        {
+          'kind': 'archive',
+        },
+        index);
+    notifyListeners();
+  }
+
+  void delete(int index) {
+    mySqlDb.deleteData('notes', index);
+    getData();
     notifyListeners();
   }
 
@@ -86,32 +59,23 @@ class TasksController with ChangeNotifier {
   }
 
   void addTask({String? taskName, required BuildContext context}) async {
-    if (isCompleteC) {
-      if (inputController.text.isNotEmpty) {
-        int response = await mySqlDb.insertData(
-          'notes',
-          {'notes': taskName ?? inputController.text},
-        );
-        print(response);
-      } else {
-        print('empty');
-      }
+    if (inputController.text.isNotEmpty) {
+      int response = await mySqlDb.insertData(
+        'notes',
+        {
+          'note': taskName ?? inputController.text,
+          'typeDone': isCompleteC ? 'done' : 'notDone',
+          'kind': isCompleteC ? 'done' : 'normal',
+        },
+      );
+      getData();
     } else {
-      if (inputController.text.isNotEmpty) {
-        allTasks.add(
-          TaskModel(
-            taskName: taskName ?? inputController.text,
-            statue: isCompleteC ? 'done' : 'normal',
-            id: 'fjghfjghjf',
-            statueBool: isCompleteC,
-          ),
-        );
-      } else {
-        print('empty');
-      }
+      print('empty');
     }
+
     inputController.clear();
     isCompleteC = false;
+    // ignore: use_build_context_synchronously
     Navigator.pop(context);
     notifyListeners();
   }

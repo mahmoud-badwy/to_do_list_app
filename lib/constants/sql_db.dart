@@ -21,42 +21,36 @@ class MySqlDb {
   }
 
   _onCreate(Database db, int oldVersion) async {
-    await db.execute('''
-    CREATE TABLE "notes" (
-      "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT ,
-      "note" TEXT NOT NULL , 
-      "typeRead" TEXT NOT NULL , 
-      "kind" TEXT NOT NULL , 
-    )
-    ''');
+    await db.execute(
+        '''CREATE TABLE "notes" (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT ,note TEXT NOT NULL,typeDone TEXT NOT NULL,kind TEXT NOT NULL)''');
     print('create');
   }
 
-  _onUprade(Database db, int oldVersion, int newVersion) {
+  _onUprade(Database db, int oldVersion, int newVersion) async {
     print('Upgrade');
   }
 
-  readData(String table) async {
+  Future<List<Map>> readData(String table) async {
     Database? myDb = await database;
-    Future<List<Map<String, Object?>>> response = myDb.query(table);
+    List<Map> response = await myDb.query(table);
     return response;
   }
 
-  insertData(String table ,Map<String, Object?> values) async {
+  insertData(String table, Map<String, Object?> values) async {
     Database? myDb = await database;
     int response = await myDb.insert(table, values);
     return response;
   }
 
-  updateData(String sql) async {
+  updateData(String table, Map<String, Object?> values, int id) async {
     Database? myDb = await database;
-    int response = await myDb.rawUpdate(sql);
+    int response = await myDb.update(table, values, where: "id = ${id + 1}");
     return response;
   }
 
-  deleteData(String sql) async {
+  deleteData(String table, int id) async {
     Database? myDb = await database;
-    int response = await myDb.rawDelete(sql);
+    int response = await myDb.delete(table, where: "id = ${id + 1}");
     return response;
   }
 }

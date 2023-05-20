@@ -11,21 +11,16 @@ class ArchiveTasks extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<TasksController>(
       builder: (context, value, child) {
-        if (value.archiveTasks.isNotEmpty) {
+        if (value.allTasks.isNotEmpty) {
           return ListView.builder(
             physics: const BouncingScrollPhysics(),
             padding: EdgeInsets.symmetric(horizontal: context.getWidth() / 20),
-            itemCount: value.archiveTasks.length,
+            itemCount: value.allTasks.length,
             itemBuilder: (context, index) {
-              if (context.watch<TasksController>().archiveTasks[index].statue ==
-                  'archive') {
-                return TaskWidget(
-                  index: index,
-                  tasks: value.archiveTasks,
-                  list: 'archive',
-                );
-              }
-              return null;
+              return TaskWidget(
+                index: index,
+                tasks: value.allTasks,
+              );
             },
           );
         }
