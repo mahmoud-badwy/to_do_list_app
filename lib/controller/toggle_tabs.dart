@@ -6,7 +6,7 @@ import 'package:to_do_list_app/view/screens/tabs/done.dart';
 class ToggleTabsController with ChangeNotifier {
   int curruntTab = 0;
   List mytabs = [
-    [const AllTasks(), true, true],
+    [const AllTasksTab(), true, true],
     [const DoneTasks(), false, false],
     [const ArchiveTasks(), false, false],
   ];

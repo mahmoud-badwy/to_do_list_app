@@ -4,6 +4,9 @@ import 'package:to_do_list_app/constants/sql_db.dart';
 class TasksController with ChangeNotifier {
   MySqlDb mySqlDb = MySqlDb();
   List<Map> allTasks = [];
+  List<Map> normalTasks = [];
+  List<Map> doneTasks = [];
+  List<Map> archiveTasks = [];
   TextEditingController inputController = TextEditingController();
   bool isCompleteC = false;
   void onChangeisCompleteC(bool newValue) {
@@ -14,6 +17,22 @@ class TasksController with ChangeNotifier {
   Future<void> getData() async {
     Future<List<Map>> response = mySqlDb.readData('notes');
     allTasks = await response;
+    normalTasks.clear();
+    doneTasks.clear();
+    archiveTasks.clear();
+    for (var element in allTasks) {
+      if (element['kind'].contains('done') ||
+          element['kind'].contains('normal')) {
+        normalTasks.add(element);
+        print('donneee');
+        if (element['kind'].contains('done')) {
+          doneTasks.add(element);
+          print('donneee2');
+        }
+      } else if (element['kind'].contains('archive')) {
+        archiveTasks.add(element);
+      }
+    }
     notifyListeners();
   }
 
@@ -21,18 +40,18 @@ class TasksController with ChangeNotifier {
     if (allTasks[index]['typeDone'] == 'done') {
       await mySqlDb.updateData(
         'notes',
-        {'typeDone': 'notDone'},
+        {'typeDone': 'notDone', 'kind': 'normal'},
         id,
       );
     } else {
       await mySqlDb.updateData(
         'notes',
-        {'typeDone': 'done'},
+        {'typeDone': 'done', 'kind': 'done'},
         id,
       );
     }
     await getData();
-    print(allTasks);
+
     notifyListeners();
   }
 
@@ -43,6 +62,7 @@ class TasksController with ChangeNotifier {
           'kind': 'archive',
         },
         id);
+    getData();
     notifyListeners();
   }
 

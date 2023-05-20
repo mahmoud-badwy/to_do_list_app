@@ -11,16 +11,15 @@ class DoneTasks extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<TasksController>(
       builder: (context, value, child) {
-        if (value.allTasks.isNotEmpty) {
+        if (value.doneTasks.isNotEmpty) {
           return ListView.builder(
             physics: const BouncingScrollPhysics(),
             padding: EdgeInsets.symmetric(horizontal: context.getWidth() / 20),
-            itemCount: value.allTasks.length,
+            itemCount: value.doneTasks.length,
             itemBuilder: (context, index) {
               return TaskWidget(
                 index: index,
-                tasks: value.allTasks,
-             
+                tasks: value.doneTasks,
               );
             },
           );

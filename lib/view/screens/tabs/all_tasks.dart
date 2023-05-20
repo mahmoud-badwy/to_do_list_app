@@ -4,21 +4,23 @@ import 'package:to_do_list_app/controller/tasks_controller.dart';
 import 'package:to_do_list_app/helper/mediaquery.dart';
 import 'package:to_do_list_app/view/widgets/tasks_widget.dart';
 
-class AllTasks extends StatelessWidget {
-  const AllTasks({super.key});
+class AllTasksTab extends StatelessWidget {
+  const AllTasksTab({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Consumer<TasksController>(
       builder: (context, value, child) {
-        if (value.allTasks.isNotEmpty) {
+        if (value.normalTasks.isNotEmpty) {
           return ListView.builder(
             physics: const BouncingScrollPhysics(),
             padding: EdgeInsets.symmetric(horizontal: context.getWidth() / 20),
-            itemCount: value.allTasks.length,
+            itemCount: value.normalTasks.length,
             itemBuilder: (context, index) {
-             
-              return TaskWidget(index: index, tasks: value.allTasks,);
+              return TaskWidget(
+                index: index,
+                tasks: value.normalTasks,
+              );
             },
           );
         }
