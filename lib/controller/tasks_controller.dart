@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_list_app/constants/sql_db.dart';
 import 'package:to_do_list_app/model/task_model.dart';
 
 class TasksController with ChangeNotifier {
+  MySqlDb mySqlDb = MySqlDb();
   List<TaskModel> allTasks = [];
   List<TaskModel> doneTasks = [];
   List<TaskModel> archiveTasks = [];
@@ -10,6 +12,12 @@ class TasksController with ChangeNotifier {
   void onChangeisCompleteC(bool newValue) {
     isCompleteC = newValue;
     notifyListeners();
+  }
+
+  Future<void> getData() async {
+    Future<List<Map<String, Object?>>> response =
+        await mySqlDb.readData('notes');
+    // allTasks = await response;
   }
 
   void changeTaskStatue(bool isComplete, int index, String list) {
@@ -31,8 +39,10 @@ class TasksController with ChangeNotifier {
       }
     } else if (list == 'archive') {
       // archiveTasks[index].statueBool = isComplete;
-        print(archiveTasks[index].statueBool);
-       archiveTasks[index].statue = archiveTasks[index].statueBool ? 'done' : 'normal';
+      archiveTasks[index].statue =
+          archiveTasks[index]
+          .statueBool ? 'done' 
+          : 'normal';
       if (archiveTasks[index].statue == 'normal') {
         allTasks.add(archiveTasks[index]);
         archiveTasks.remove(archiveTasks[index]);
@@ -75,17 +85,14 @@ class TasksController with ChangeNotifier {
     Navigator.pop(context);
   }
 
-  void addTask({String? taskName, required BuildContext context}) {
+  void addTask({String? taskName, required BuildContext context}) async {
     if (isCompleteC) {
       if (inputController.text.isNotEmpty) {
-        doneTasks.add(
-          TaskModel(
-            taskName: taskName ?? inputController.text,
-            statue: isCompleteC ? 'done' : 'normal',
-            id: 'fjghfjghjf',
-            statueBool: isCompleteC,
-          ),
+        int response = await mySqlDb.insertData(
+          'notes',
+          {'notes': taskName ?? inputController.text},
         );
+        print(response);
       } else {
         print('empty');
       }
