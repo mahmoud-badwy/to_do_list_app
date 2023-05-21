@@ -24,10 +24,9 @@ class TasksController with ChangeNotifier {
       if (element['kind'].contains('done') ||
           element['kind'].contains('normal')) {
         normalTasks.add(element);
-        print('donneee');
+
         if (element['kind'].contains('done')) {
           doneTasks.add(element);
-          print('donneee2');
         }
       } else if (element['kind'].contains('archive')) {
         archiveTasks.add(element);
@@ -62,6 +61,27 @@ class TasksController with ChangeNotifier {
           'kind': 'archive',
         },
         id);
+    getData();
+    notifyListeners();
+  }
+
+  void removeFromArchive(int id, {required String typeDone}) {
+    if (typeDone == 'done') {
+      mySqlDb.updateData(
+          'notes',
+          {
+            'kind': 'done',
+          },
+          id);
+    } else {
+      mySqlDb.updateData(
+          'notes',
+          {
+            'kind': 'normal',
+          },
+          id);
+    }
+
     getData();
     notifyListeners();
   }

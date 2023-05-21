@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_list_app/controller/tasks_controller.dart';
+import 'package:to_do_list_app/controller/toggle_tabs.dart';
 
 class TaskWidget extends StatelessWidget {
   final int index;
@@ -14,6 +15,9 @@ class TaskWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ToggleTabsController toggleTabsController =
+        context.read<ToggleTabsController>();
+    TasksController tasksController = context.read<TasksController>();
     return Padding(
       padding: const EdgeInsets.only(
         top: 25,
@@ -25,7 +29,7 @@ class TaskWidget extends StatelessWidget {
             SlidableAction(
               borderRadius: BorderRadius.circular(20),
               onPressed: (p1) {
-                context.read<TasksController>().delete(tasks[index]['id']);
+                tasksController.delete(tasks[index]['id']);
               },
               backgroundColor: const Color(0xFFFE4A49),
               foregroundColor: Colors.white,
@@ -37,15 +41,22 @@ class TaskWidget extends StatelessWidget {
             ),
             SlidableAction(
               onPressed: (p1) {
-                context
-                    .read<TasksController>()
-                    .addToArchive(tasks[index]['id']);
+                if (toggleTabsController.curruntTab == 2) {
+                  tasksController.removeFromArchive(tasks[index]['id'],
+                      typeDone: tasks[index]['typeDone']);
+                } else {
+                  tasksController.addToArchive(tasks[index]['id']);
+                }
               },
               borderRadius: BorderRadius.circular(20),
               backgroundColor: Colors.green[200]!,
               foregroundColor: Colors.white,
-              icon: Icons.archive,
-              label: 'Archive',
+              icon: toggleTabsController.curruntTab == 2
+                  ? Icons.unarchive
+                  : Icons.unarchive,
+              label: toggleTabsController.curruntTab == 2
+                  ? 'UnArchive'
+                  : 'Archive',
             ),
           ],
         ),
@@ -100,9 +111,13 @@ class TaskWidget extends StatelessWidget {
             checkColor: Colors.green[900],
             value: tasks[index]['typeDone'] == 'done',
             onChanged: (value) {
-              context
-                  .read<TasksController>()
-                  .changeTaskStatue(value!, index, tasks[index]['id']);
+              if (toggleTabsController.curruntTab == 2) {
+                print('can\'t');
+              } else {
+                context
+                    .read<TasksController>()
+                    .changeTaskStatue(value!, index, tasks[index]['id']);
+              }
             },
           ),
         ),
