@@ -1,6 +1,7 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:to_do_list_app/helper/mediaquery.dart';
+import 'package:to_do_list_app/view/widgets/profile/made_by_mahmoud.dart';
+
 class UserIsNotLogin extends StatelessWidget {
   const UserIsNotLogin({
     super.key,
@@ -59,31 +60,8 @@ class UserIsNotLogin extends StatelessWidget {
           value: true,
           onChanged: (newValue) {},
         ),
-
         const Spacer(),
-        Text.rich(
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.normal,
-          ),
-          textAlign: TextAlign.start,
-          TextSpan(
-            text: 'This App make by ',
-            children: <TextSpan>[
-              TextSpan(
-                text: 'Mahmoud Badwy',
-                style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                  decoration: TextDecoration.underline,
-                ),
-                recognizer: TapGestureRecognizer()
-                  ..onTap = () {
-                    // code to open / launch terms of service link here
-                  },
-              ),
-            ],
-          ),
-        ),
+        const MadeByMahmoud(),
         const Spacer(
           flex: 2,
         ),
