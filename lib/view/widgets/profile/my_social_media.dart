@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_list_app/helper/mediaquery.dart';
 
 class MySocialMedia extends StatelessWidget {
   const MySocialMedia({super.key});
@@ -7,16 +8,28 @@ class MySocialMedia extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      children: const <Widget>[
-        SocialMediaElement(
+      children: <Widget>[
+        const SocialMediaElement(
           text: 'FaceBook',
         ),
-        SocialMediaElement(
+        const SocialMediaElement(
           text: 'GitHub',
         ),
-        SocialMediaElement(
+        const SocialMediaElement(
           text: 'LinkedIn',
         ),
+        SizedBox(
+          height: context.getHeight() / 40,
+        ),
+        InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: CircleAvatar(
+            backgroundColor: Colors.red[400],
+            child: const Icon(Icons.close, color: Colors.white),
+          ),
+        )
       ],
     );
   }
@@ -48,14 +61,21 @@ class SocialMediaElement extends StatelessWidget {
         ),
         color: Colors.yellow,
         elevation: 5,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text(
-              text,
-              style: const TextStyle(fontSize: 18),
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 30),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Image.asset(
+                'assets/social_media_icons/${text.toLowerCase()}.png',
+                width: 30,
+              ),
+              Text(
+                text,
+                style: const TextStyle(fontSize: 18),
+              ),
+            ],
+          ),
         ),
       ),
     );

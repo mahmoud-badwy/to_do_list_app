@@ -27,7 +27,7 @@ flutter:
 
   assets:
     - assets/me.jpg
-  #   - images/a_dot_ham.jpeg
+    - assets/social_media_icons/
 
   fonts:
     - family: Satisfy
