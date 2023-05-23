@@ -31,6 +31,9 @@ class MadeByMahmoud extends StatelessWidget {
                   builder: (context) => AlertDialog(
                     backgroundColor: Colors.yellow[200],
                     content: const MySocialMedia(),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                   ),
                 );
               },

@@ -43,6 +43,9 @@ class SocialMediaElement extends StatelessWidget {
         // }
       },
       child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
         color: Colors.yellow,
         elevation: 5,
         child: Row(
