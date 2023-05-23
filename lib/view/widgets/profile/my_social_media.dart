@@ -24,12 +24,24 @@ class MySocialMedia extends StatelessWidget {
 
 class SocialMediaElement extends StatelessWidget {
   final String text;
-  const SocialMediaElement({super.key, required this.text});
+  const SocialMediaElement({
+    super.key,
+    required this.text,
+  });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () async {
+        //on tap icon
+        // Uri urlParse = Uri.parse('https://flutter.dev');
+
+        // if (await canLaunchUrl(urlParse)) {
+        //   await launchUrl(urlParse);
+        // } else {
+        //   throw 'Could not launch https://flutter.dev';
+        // }
+      },
       child: Card(
         color: Colors.yellow,
         elevation: 5,
