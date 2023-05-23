@@ -23,7 +23,7 @@ class UserIsNotLogin extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(200),
               child: Image.asset(
-                'assets/me.jpg',
+                'assets/images/user.png',
                 fit: BoxFit.cover,
               ),
             ),
