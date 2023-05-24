@@ -50,6 +50,23 @@ class MyPopUpMenuButton extends StatelessWidget {
         // PopupMenuItem 3
         PopupMenuItem(
           value: 3,
+          // row with two children
+          child: Row(
+            children: [
+              Icon(
+                Icons.archive_rounded,
+                color: Colors.red[400],
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              const Text("Archive All")
+            ],
+          ),
+        ),
+        // PopupMenuItem 4
+        PopupMenuItem(
+          value: 4,
           // row with 2 children
           child: Row(
             children: [
@@ -64,7 +81,7 @@ class MyPopUpMenuButton extends StatelessWidget {
             ],
           ),
         ),
-        // PopupMenuItem 4
+        // PopupMenuItem 5
         PopupMenuItem(
           value: 4,
           // row with two children
@@ -90,6 +107,8 @@ class MyPopUpMenuButton extends StatelessWidget {
           context.read<TasksController>().doneAll();
         } else if (value == 2) {
           context.read<TasksController>().deleteAll();
+        } else if (value == 3) {
+          context.read<TasksController>().archiveAll();
         }
       },
     );

@@ -130,10 +130,24 @@ class TasksController with ChangeNotifier {
   }
 
   doneAll() {
-    for (var element in allTasks) {
+    for (var element in normalTasks) {
       mySqlDb.updateData(
         'notes',
         {'typeDone': 'done', 'kind': 'done'},
+        element['id'],
+      );
+    }
+    getData();
+    notifyListeners();
+  }
+
+  archiveAll() {
+    for (var element in allTasks) {
+      mySqlDb.updateData(
+        'notes',
+        {
+          'kind': 'archive',
+        },
         element['id'],
       );
     }
