@@ -3,6 +3,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_list_app/controller/tasks_controller.dart';
 import 'package:to_do_list_app/controller/toggle_tabs.dart';
+import 'package:to_do_list_app/helper/mediaquery.dart';
 
 class TaskWidget extends StatelessWidget {
   final int index;
@@ -112,7 +113,39 @@ class TaskWidget extends StatelessWidget {
             value: tasks[index]['typeDone'] == 'done',
             onChanged: (value) {
               if (toggleTabsController.curruntTab == 2) {
-                print('can\'t');
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    backgroundColor: Colors.yellow[200],
+                    content: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Text(
+                          'You Can\'t control on task in Archive.\ntry move it from archive before.',
+                          style: TextStyle(
+                            fontSize: 22,
+                          ),
+                        ),
+                        SizedBox(
+                          height: context.getHeight() / 40,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: CircleAvatar(
+                            backgroundColor: Colors.green[400],
+                            child: const Icon(Icons.done_outlined,
+                                color: Colors.white),
+                          ),
+                        )
+                      ],
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                );
               } else {
                 context
                     .read<TasksController>()
