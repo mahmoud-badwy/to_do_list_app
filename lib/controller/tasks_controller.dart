@@ -100,6 +100,7 @@ class TasksController with ChangeNotifier {
 
   void addTask({String? taskName, required BuildContext context}) async {
     if (inputController.text.isNotEmpty) {
+      // ignore: unused_local_variable
       int response = await mySqlDb.insertData(
         'notes',
         {
@@ -118,5 +119,13 @@ class TasksController with ChangeNotifier {
     // ignore: use_build_context_synchronously
     Navigator.pop(context);
     notifyListeners();
+  }
+
+  Future<void> deleteAll() async {
+    for (var element in allTasks) {
+      delete(element['id']);
+      print('done');
+    }
+    
   }
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:to_do_list_app/controller/tasks_controller.dart';
 
 class MyPopUpMenuButton extends StatelessWidget {
   const MyPopUpMenuButton({super.key});
@@ -87,7 +89,7 @@ class MyPopUpMenuButton extends StatelessWidget {
         if (value == 1) {
           print(1);
         } else if (value == 2) {
-          print(2);
+          context.read<TasksController>().deleteAll();
         }
       },
     );
