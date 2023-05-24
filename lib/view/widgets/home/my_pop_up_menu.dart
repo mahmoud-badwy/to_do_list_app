@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:to_do_list_app/constants/links.dart';
 import 'package:to_do_list_app/controller/actions_controllers.dart';
 import 'package:to_do_list_app/controller/tasks_controller.dart';
 import 'package:to_do_list_app/view/screens/profile.dart';
@@ -126,11 +127,11 @@ class MyPopUpMenuButton extends StatelessWidget {
         } else if (value == 3) {
           context.read<TasksController>().archiveAll();
         } else if (value == 4) {
-          context.read<ActionsController>().launchLink(
-              'play.google.com/store/apps/details?id=mahmoudbadwy.app.todo.makeit');
+          context.read<ActionsController>().launchLink(AppLinks.googlePlayLink);
         } else if (value == 5) {
-          context.read<ActionsController>().launchLink(
-              'www.freeprivacypolicy.com/live/1f7d0f28-31c2-45c5-bb45-b40cc074d3ba');
+          context
+              .read<ActionsController>()
+              .launchLink(AppLinks.praivacyPolicyLink);
         } else if (value == 6) {
           Navigator.pushNamed(context, ProfilePage.pageRoute);
         }

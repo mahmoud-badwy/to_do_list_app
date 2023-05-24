@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:to_do_list_app/constants/links.dart';
 import 'package:to_do_list_app/controller/actions_controllers.dart';
 import 'package:to_do_list_app/helper/mediaquery.dart';
 
@@ -13,15 +14,15 @@ class MySocialMedia extends StatelessWidget {
       children: <Widget>[
         const SocialMediaElement(
           text: 'FaceBook',
-          url: 'facebook.com/mahmoud.badwy.25',
+          url: AppLinks.facebookLink,
         ),
         const SocialMediaElement(
           text: 'GitHub',
-          url: 'github.com/mahmoud-badwi',
+          url: AppLinks.githubLink,
         ),
         const SocialMediaElement(
           text: 'LinkedIn',
-          url: 'linkedin.com',
+          url: AppLinks.linkedinLink,
         ),
         SizedBox(
           height: context.getHeight() / 40,
