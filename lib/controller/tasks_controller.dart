@@ -123,9 +123,21 @@ class TasksController with ChangeNotifier {
 
   Future<void> deleteAll() async {
     for (var element in allTasks) {
-      delete(element['id']);
-      print('done');
+      mySqlDb.deleteData('notes', element['id']);
     }
-    
+    getData();
+    notifyListeners();
+  }
+
+  doneAll() {
+    for (var element in allTasks) {
+      mySqlDb.updateData(
+        'notes',
+        {'typeDone': 'done', 'kind': 'done'},
+        element['id'],
+      );
+    }
+    getData();
+    notifyListeners();
   }
 }

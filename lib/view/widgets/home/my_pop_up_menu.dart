@@ -87,7 +87,7 @@ class MyPopUpMenuButton extends StatelessWidget {
       ),
       onSelected: (value) {
         if (value == 1) {
-          print(1);
+          context.read<TasksController>().doneAll();
         } else if (value == 2) {
           context.read<TasksController>().deleteAll();
         }
