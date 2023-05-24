@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_list_app/controller/toggle_tabs.dart';
 import 'package:to_do_list_app/helper/mediaquery.dart';
-import 'package:to_do_list_app/view/widgets/bottom_nav_item.dart';
+import 'package:to_do_list_app/view/widgets/home/bottom_nav_item.dart';
 
 class MyBottomNavigatoinBar extends StatelessWidget {
   const MyBottomNavigatoinBar({
