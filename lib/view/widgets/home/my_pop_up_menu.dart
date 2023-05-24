@@ -80,6 +80,9 @@ class MyPopUpMenuButton extends StatelessWidget {
       offset: const Offset(-20, 40),
       color: Colors.white,
       elevation: 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
       onSelected: (value) {
         if (value == 1) {
           print(1);
