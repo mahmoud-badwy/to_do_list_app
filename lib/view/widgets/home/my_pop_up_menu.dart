@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_list_app/controller/tasks_controller.dart';
+import 'package:to_do_list_app/view/screens/profile.dart';
 
 class MyPopUpMenuButton extends StatelessWidget {
   const MyPopUpMenuButton({super.key});
@@ -83,7 +84,7 @@ class MyPopUpMenuButton extends StatelessWidget {
         ),
         // PopupMenuItem 5
         PopupMenuItem(
-          value: 4,
+          value: 5,
           // row with two children
           child: Row(
             children: const [
@@ -109,6 +110,8 @@ class MyPopUpMenuButton extends StatelessWidget {
           context.read<TasksController>().deleteAll();
         } else if (value == 3) {
           context.read<TasksController>().archiveAll();
+        } else if (value == 5) {
+          Navigator.pushNamed(context, ProfilePage.pageRoute);
         }
       },
     );
