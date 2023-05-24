@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:to_do_list_app/controller/actions_controllers.dart';
 import 'package:to_do_list_app/helper/mediaquery.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class MySocialMedia extends StatelessWidget {
   const MySocialMedia({super.key});
@@ -50,16 +51,7 @@ class SocialMediaElement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () async {
-        Uri urlParse = Uri.parse('https://$url');
-
-        if (await canLaunchUrl(urlParse)) {
-          await launchUrl(
-              mode: LaunchMode.externalNonBrowserApplication, urlParse);
-        } else {
-          throw 'Could not launch https://flutter.dev';
-        }
-      },
+      onTap: () => context.read<ActionsController>().launchLink(url),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
