@@ -31,9 +31,15 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leadingWidth: 60,
         centerTitle: true,
         leading: Padding(
-          padding: const EdgeInsets.all(5.0),
+          padding: const EdgeInsets.only(
+            top: 5.0,
+            bottom: 5.0,
+            right: 5.0,
+            left: 15.0,
+          ),
           child: InkWell(
             onTap: () => Navigator.pushNamed(context, ProfilePage.pageRoute),
             child: Hero(

@@ -31,6 +31,7 @@ class MyAlertWidget extends StatelessWidget {
             Navigator.pop(context);
           },
           child: CircleAvatar(
+            radius: 27,
             backgroundColor: color,
             child: Icon(icon, color: Colors.white),
           ),
