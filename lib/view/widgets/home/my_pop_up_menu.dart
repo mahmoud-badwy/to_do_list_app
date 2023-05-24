@@ -125,6 +125,9 @@ class MyPopUpMenuButton extends StatelessWidget {
           context.read<TasksController>().deleteAll();
         } else if (value == 3) {
           context.read<TasksController>().archiveAll();
+        } else if (value == 4) {
+          context.read<ActionsController>().launchLink(
+              'play.google.com/store/apps/details?id=mahmoudbadwy.app.todo.makeit');
         } else if (value == 5) {
           context.read<ActionsController>().launchLink(
               'www.freeprivacypolicy.com/live/1f7d0f28-31c2-45c5-bb45-b40cc074d3ba');
