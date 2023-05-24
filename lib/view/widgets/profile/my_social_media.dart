@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_list_app/helper/mediaquery.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MySocialMedia extends StatelessWidget {
   const MySocialMedia({super.key});
@@ -11,12 +12,15 @@ class MySocialMedia extends StatelessWidget {
       children: <Widget>[
         const SocialMediaElement(
           text: 'FaceBook',
+          url: 'facebook.com/mahmoud.badwy.25',
         ),
         const SocialMediaElement(
           text: 'GitHub',
+          url: 'github.com/mahmoud-badwi',
         ),
         const SocialMediaElement(
           text: 'LinkedIn',
+          url: 'linkedin.com',
         ),
         SizedBox(
           height: context.getHeight() / 40,
@@ -36,24 +40,25 @@ class MySocialMedia extends StatelessWidget {
 }
 
 class SocialMediaElement extends StatelessWidget {
-  final String text;
+  final String text, url;
   const SocialMediaElement({
     super.key,
     required this.text,
+    required this.url,
   });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () async {
-        //on tap icon
-        // Uri urlParse = Uri.parse('https://flutter.dev');
+        Uri urlParse = Uri.parse('https://$url');
 
-        // if (await canLaunchUrl(urlParse)) {
-        //   await launchUrl(urlParse);
-        // } else {
-        //   throw 'Could not launch https://flutter.dev';
-        // }
+        if (await canLaunchUrl(urlParse)) {
+          await launchUrl(
+              mode: LaunchMode.externalNonBrowserApplication, urlParse);
+        } else {
+          throw 'Could not launch https://flutter.dev';
+        }
       },
       child: Card(
         shape: RoundedRectangleBorder(
