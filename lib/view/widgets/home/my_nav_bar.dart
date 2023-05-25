@@ -13,7 +13,13 @@ class MyBottomNavigatoinBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: context.getHeight() / 12,
+      height: context.getHeight() < 350
+          ? 0
+          : context.getHeight() > 350 && context.getHeight() < 550
+              ? context.getHeight() / 6
+              : context.getHeight() > 550 && context.getHeight() < 700
+                  ? context.getHeight() / 9
+                  : context.getHeight() / 12,
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
         color: Colors.yellow[600],
