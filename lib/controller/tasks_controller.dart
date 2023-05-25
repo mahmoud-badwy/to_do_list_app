@@ -20,7 +20,8 @@ class TasksController with ChangeNotifier {
     notifyListeners();
   }
 
-  void setIsSoundOn(bool newValue) {
+  void setIsSoundOn(bool newValue) async {
+    await player.stop();
     isSoundOn = newValue;
     notifyListeners();
   }
