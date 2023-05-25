@@ -159,16 +159,18 @@ class TasksController with ChangeNotifier {
   }
 
   doneAll() {
-    playSound();
-
-    for (var element in normalTasks) {
-      mySqlDb.updateData(
-        'notes',
-        {'typeDone': 'done', 'kind': 'done'},
-        element['id'],
-      );
+    if (normalTasks.isNotEmpty) {
+      playSound();
+      for (var element in normalTasks) {
+        mySqlDb.updateData(
+          'notes',
+          {'typeDone': 'done', 'kind': 'done'},
+          element['id'],
+        );
+      }
+      getData();
     }
-    getData();
+
     notifyListeners();
   }
 
