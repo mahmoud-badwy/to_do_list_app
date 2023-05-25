@@ -64,7 +64,7 @@ class TasksController with ChangeNotifier {
   }
 
   void changeTaskStatue(bool isComplete, int index, int id) async {
-    if (allTasks[index]['typeDone'] == 'done') {
+    if (normalTasks[index]['typeDone'] == 'done') {
       await mySqlDb.updateData(
         'notes',
         {'typeDone': 'notDone', 'kind': 'normal'},
