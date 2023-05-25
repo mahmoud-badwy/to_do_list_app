@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:to_do_list_app/controller/tasks_controller.dart';
-import 'package:to_do_list_app/helper/mediaquery.dart';
-import 'package:to_do_list_app/view/widgets/profile/made_by_mahmoud.dart';
+import '../../../controller/tasks_controller.dart';
+import '../../../helper/mediaquery.dart';
+import 'made_by_mahmoud.dart';
 
 class UserIsNotLogin extends StatelessWidget {
   const UserIsNotLogin({

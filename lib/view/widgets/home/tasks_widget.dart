@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
-import 'package:to_do_list_app/controller/tasks_controller.dart';
-import 'package:to_do_list_app/controller/toggle_tabs.dart';
-import 'package:to_do_list_app/view/widgets/home/my_alert_widget.dart';
+import '../../../controller/tasks_controller.dart';
+import '../../../controller/toggle_tabs.dart';
+import 'my_alert_widget.dart';
 
 class TaskWidget extends StatelessWidget {
   final int index;

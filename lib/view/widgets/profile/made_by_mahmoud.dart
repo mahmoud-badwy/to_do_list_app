@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:to_do_list_app/view/widgets/profile/my_social_media.dart';
+import 'my_social_media.dart';
 
 class MadeByMahmoud extends StatelessWidget {
   const MadeByMahmoud({

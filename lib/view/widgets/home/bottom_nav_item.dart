@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:to_do_list_app/controller/toggle_tabs.dart';
-import 'package:to_do_list_app/helper/mediaquery.dart';
+import '../../../controller/toggle_tabs.dart';
+import '../../../helper/mediaquery.dart';
 
 class MyBottomNaviagtionBarItem extends StatelessWidget {
   const MyBottomNaviagtionBarItem({

@@ -1,7 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:to_do_list_app/constants/sql_db.dart';
-import 'package:to_do_list_app/view/widgets/home/my_alert_widget.dart';
+import '../constants/sql_db.dart';
+import '../view/widgets/home/my_alert_widget.dart';
 
 class TasksController with ChangeNotifier {
   final player = AudioPlayer();

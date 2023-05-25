@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:to_do_list_app/constants/links.dart';
-import 'package:to_do_list_app/controller/actions_controllers.dart';
-import 'package:to_do_list_app/helper/mediaquery.dart';
+import '../../../constants/links.dart';
+import '../../../controller/actions_controllers.dart';
+import '../../../helper/mediaquery.dart';
 
 class MySocialMedia extends StatelessWidget {
   const MySocialMedia({super.key});

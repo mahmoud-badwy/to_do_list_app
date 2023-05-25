@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:to_do_list_app/controller/tasks_controller.dart';
-import 'package:to_do_list_app/helper/mediaquery.dart';
-import 'package:to_do_list_app/view/widgets/home/tasks_widget.dart';
+import '../../../controller/tasks_controller.dart';
+import '../../../helper/mediaquery.dart';
+import '../../widgets/home/tasks_widget.dart';
 
 class DoneTasks extends StatelessWidget {
   const DoneTasks({super.key});

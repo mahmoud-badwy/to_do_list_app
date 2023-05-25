@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_list_app/view/widgets/profile/user_is_not_login.dart';
+import '../widgets/profile/user_is_not_login.dart';
 
 class ProfilePage extends StatelessWidget {
   static const String pageRoute = 'profile_page';

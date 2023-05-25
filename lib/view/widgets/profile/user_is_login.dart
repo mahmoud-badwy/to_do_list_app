@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:to_do_list_app/helper/mediaquery.dart';
+
+import '../../../helper/mediaquery.dart';
 
 class UserIsLogin extends StatelessWidget {
   const UserIsLogin({

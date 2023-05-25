@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:to_do_list_app/constants/links.dart';
-import 'package:to_do_list_app/controller/actions_controllers.dart';
-import 'package:to_do_list_app/controller/tasks_controller.dart';
-import 'package:to_do_list_app/view/screens/profile.dart';
+import '../../../constants/links.dart';
+import '../../../controller/actions_controllers.dart';
+import '../../../controller/tasks_controller.dart';
+import '../../screens/profile.dart';
 
 class MyPopUpMenuButton extends StatelessWidget {
   const MyPopUpMenuButton({super.key});

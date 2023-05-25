@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:to_do_list_app/constants/controllers.dart';
-import 'package:to_do_list_app/constants/routes.dart';
-import 'package:to_do_list_app/constants/theme.dart';
+import 'constants/controllers.dart';
+import 'constants/routes.dart';
+import 'constants/theme.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(

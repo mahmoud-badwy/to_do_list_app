@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_list_app/helper/mediaquery.dart';
+import '../../../helper/mediaquery.dart';
 
 class MyAlertWidget extends StatelessWidget {
   final String text;

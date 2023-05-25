@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_list_app/view/screens/tabs/all_tasks.dart';
-import 'package:to_do_list_app/view/screens/tabs/archive.dart';
-import 'package:to_do_list_app/view/screens/tabs/done.dart';
+import '../view/screens/tabs/all_tasks.dart';
+import '../view/screens/tabs/archive.dart';
+import '../view/screens/tabs/done.dart';
 
 class ToggleTabsController with ChangeNotifier {
   PageController pageViewController = PageController();
