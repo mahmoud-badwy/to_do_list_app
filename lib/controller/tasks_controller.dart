@@ -1,6 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:to_do_list_app/constants/sql_db.dart';
+import 'package:to_do_list_app/view/widgets/home/my_alert_widget.dart';
 
 class TasksController with ChangeNotifier {
   final player = AudioPlayer();
@@ -140,7 +141,20 @@ class TasksController with ChangeNotifier {
       );
       getData();
     } else {
-      print('empty');
+      await showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          backgroundColor: Colors.yellow[200],
+          content: MyAlertWidget(
+            icon: Icons.done_rounded,
+            text: 'You Can\'t add empty task !',
+            color: Colors.green[400]!,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+        ),
+      );
     }
 
     inputController.clear();
