@@ -16,6 +16,7 @@ dependencies:
   flutter_slidable: ^3.0.0
   sqflite: ^2.2.8+4
   url_launcher: ^6.1.11
+  audioplayers: ^4.0.1
 
 dev_dependencies:
   flutter_test:
