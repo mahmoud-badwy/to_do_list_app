@@ -48,40 +48,51 @@ class UserIsNotLogin extends StatelessWidget {
         const Spacer(
           flex: 1,
         ),
-        SwitchListTile(
-          activeTrackColor: Colors.green[200],
-          activeColor: Colors.black,
-          title: const Text(
-            'make voice on done task',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-              letterSpacing: 1,
-            ),
-          ),
-          value: context.watch<TasksController>().isSoundOn,
-          onChanged: (newValue) {
-            context.read<TasksController>().setIsSoundOn(newValue);
+        Consumer<TasksController>(
+          builder: (context, value, child) {
+            return Column(
+              children: [
+                SwitchListTile(
+                  activeTrackColor: Colors.green[200],
+                  activeColor: Colors.black,
+                  title: const Text(
+                    'make voice on done task',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 1,
+                    ),
+                  ),
+                  value: value.isSoundOn,
+                  onChanged: (newValue) {
+                    value.setIsSoundOn(newValue);
+                  },
+                ),
+                Visibility(
+                  visible: value.isSoundOn,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20.0),
+                    child: SwitchListTile(
+                      activeTrackColor: Colors.green[200],
+                      activeColor: Colors.black,
+                      title: const Text(
+                        'play full sound',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 1,
+                        ),
+                      ),
+                      value: value.isFullSound,
+                      onChanged: (newValue) {
+                        value.setIsFullSound(newValue);
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            );
           },
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 20.0),
-          child: SwitchListTile(
-            activeTrackColor: Colors.green[200],
-            activeColor: Colors.black,
-            title: const Text(
-              'play full sound',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-                letterSpacing: 1,
-              ),
-            ),
-            value: context.watch<TasksController>().isFullSound,
-            onChanged: (newValue) {
-              context.read<TasksController>().setIsFullSound(newValue);
-            },
-          ),
         ),
         const Spacer(),
         const MadeByMahmoud(),
