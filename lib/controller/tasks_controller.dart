@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:to_do_list_app/constants/sql_db.dart';
 
 class TasksController with ChangeNotifier {
+  final player = AudioPlayer();
   MySqlDb mySqlDb = MySqlDb();
   List<Map> allTasks = [];
   List<Map> normalTasks = [];
@@ -27,6 +28,17 @@ class TasksController with ChangeNotifier {
   void setIsFullSound(bool newValue) {
     isFullSound = newValue;
     notifyListeners();
+  }
+
+  Future<void> playSound() async {
+    if (isSoundOn) {
+      await player.stop();
+      if (isFullSound) {
+        await player.play(AssetSource('sounds/full.mp3'));
+      } else {
+        await player.play(AssetSource('sounds/half.mp3'));
+      }
+    }
   }
 
   Future<void> getData() async {
@@ -58,11 +70,7 @@ class TasksController with ChangeNotifier {
         id,
       );
     } else {
-      if (isSoundOn) {
-        final player = AudioPlayer();
-        await player.play(AssetSource('sounds/half.mp3'));
-      }
-
+      playSound();
       await mySqlDb.updateData(
         'notes',
         {'typeDone': 'done', 'kind': 'done'},
@@ -150,6 +158,8 @@ class TasksController with ChangeNotifier {
   }
 
   doneAll() {
+    playSound();
+
     for (var element in normalTasks) {
       mySqlDb.updateData(
         'notes',
