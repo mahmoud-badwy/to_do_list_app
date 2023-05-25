@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:to_do_list_app/constants/sql_db.dart';
 
@@ -51,6 +52,11 @@ class TasksController with ChangeNotifier {
         id,
       );
     } else {
+      if (isSoundOn) {
+        final player = AudioPlayer();
+        await player.play(AssetSource('sounds/half.mp3'));
+      }
+
       await mySqlDb.updateData(
         'notes',
         {'typeDone': 'done', 'kind': 'done'},
