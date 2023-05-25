@@ -15,15 +15,15 @@ class MyBottomNavigatoinBar extends StatelessWidget {
     return Container(
       height: context.getHeight() / 12,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
         color: Colors.yellow[600],
       ),
       padding: EdgeInsets.symmetric(vertical: context.getHeight() / 90),
-      margin: EdgeInsets.only(
-        bottom: context.getHeight() / 40,
-        right: context.getWidth() / 15,
-        left: context.getWidth() / 15,
-      ),
+      // margin: EdgeInsets.only(
+      //   bottom: context.getHeight() / 40,
+      //   right: context.getWidth() / 15,
+      //   left: context.getWidth() / 15,
+      // ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
