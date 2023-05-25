@@ -8,10 +8,12 @@ import 'package:to_do_list_app/view/widgets/home/my_alert_widget.dart';
 class TaskWidget extends StatelessWidget {
   final int index;
   final List<Map> tasks;
+  final String screen;
   const TaskWidget({
     super.key,
     required this.index,
     required this.tasks,
+    required this.screen,
   });
 
   @override
@@ -129,9 +131,8 @@ class TaskWidget extends StatelessWidget {
                   ),
                 );
               } else {
-                context
-                    .read<TasksController>()
-                    .changeTaskStatue(value!, index, tasks[index]['id']);
+                context.read<TasksController>().changeTaskStatue(
+                    value!, index, tasks[index]['id'], screen);
               }
             },
           ),

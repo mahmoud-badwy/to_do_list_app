@@ -64,21 +64,40 @@ class TasksController with ChangeNotifier {
     notifyListeners();
   }
 
-  void changeTaskStatue(bool isComplete, int index, int id) async {
-    if (normalTasks[index]['typeDone'] == 'done') {
-      await mySqlDb.updateData(
-        'notes',
-        {'typeDone': 'notDone', 'kind': 'normal'},
-        id,
-      );
+  void changeTaskStatue(
+      bool isComplete, int index, int id, String screen) async {
+    if (screen == 'normal') {
+      if (normalTasks[index]['typeDone'] == 'done') {
+        await mySqlDb.updateData(
+          'notes',
+          {'typeDone': 'notDone', 'kind': 'normal'},
+          id,
+        );
+      } else {
+        playSound();
+        await mySqlDb.updateData(
+          'notes',
+          {'typeDone': 'done', 'kind': 'done'},
+          id,
+        );
+      }
     } else {
-      playSound();
-      await mySqlDb.updateData(
-        'notes',
-        {'typeDone': 'done', 'kind': 'done'},
-        id,
-      );
+      if (doneTasks[index]['typeDone'] == 'done') {
+        await mySqlDb.updateData(
+          'notes',
+          {'typeDone': 'notDone', 'kind': 'normal'},
+          id,
+        );
+      } else {
+        playSound();
+        await mySqlDb.updateData(
+          'notes',
+          {'typeDone': 'done', 'kind': 'done'},
+          id,
+        );
+      }
     }
+
     await getData();
 
     notifyListeners();

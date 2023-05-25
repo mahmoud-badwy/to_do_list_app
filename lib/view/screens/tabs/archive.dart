@@ -20,6 +20,7 @@ class ArchiveTasks extends StatelessWidget {
               return TaskWidget(
                 index: index,
                 tasks: value.archiveTasks,
+                screen: 'archive',
               );
             },
           );

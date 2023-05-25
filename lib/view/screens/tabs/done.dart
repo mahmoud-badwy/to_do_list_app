@@ -20,6 +20,7 @@ class DoneTasks extends StatelessWidget {
               return TaskWidget(
                 index: index,
                 tasks: value.doneTasks,
+                screen: 'done',
               );
             },
           );

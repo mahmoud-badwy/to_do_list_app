@@ -19,7 +19,7 @@ class AllTasksTab extends StatelessWidget {
             itemBuilder: (context, index) {
               return TaskWidget(
                 index: index,
-                tasks: value.normalTasks,
+                tasks: value.normalTasks, screen: 'normal',
               );
             },
           );
