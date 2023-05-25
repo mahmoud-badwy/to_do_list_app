@@ -11,6 +11,7 @@ class TasksController with ChangeNotifier {
   TextEditingController inputController = TextEditingController();
   //is sound on
   bool isSoundOn = false;
+  bool isFullSound = false;
   //is sound on
   bool isCompleteC = false;
   void onChangeisCompleteC(bool newValue) {
@@ -20,6 +21,11 @@ class TasksController with ChangeNotifier {
 
   void setIsSoundOn(bool newValue) {
     isSoundOn = newValue;
+    notifyListeners();
+  }
+
+  void setIsFullSound(bool newValue) {
+    isFullSound = newValue;
     notifyListeners();
   }
 
