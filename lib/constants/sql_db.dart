@@ -23,12 +23,9 @@ class MySqlDb {
   _onCreate(Database db, int oldVersion) async {
     await db.execute(
         '''CREATE TABLE "notes" (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT ,note TEXT NOT NULL,typeDone TEXT NOT NULL,kind TEXT NOT NULL)''');
-    print('create');
   }
 
-  _onUprade(Database db, int oldVersion, int newVersion) async {
-    print('Upgrade');
-  }
+  _onUprade(Database db, int oldVersion, int newVersion) async {}
 
   Future<List<Map>> readData(String table) async {
     Database? myDb = await database;
