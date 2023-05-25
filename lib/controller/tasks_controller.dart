@@ -81,7 +81,7 @@ class TasksController with ChangeNotifier {
           id,
         );
       }
-    } else {
+    } else if (screen == 'done') {
       if (doneTasks[index]['typeDone'] == 'done') {
         await mySqlDb.updateData(
           'notes',
