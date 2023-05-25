@@ -57,11 +57,19 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text('You Can Do it !'),
         actions: const [MyPopUpMenuButton()],
       ),
-      body: SafeArea(
-        child: context
-            .watch<ToggleTabsController>()
-            .mytabs[context.watch<ToggleTabsController>().curruntTab][0],
-      ),
+      body: SafeArea(child: Consumer<ToggleTabsController>(
+        builder: (context, value, child) {
+          return PageView(
+            controller: value.pageViewController,
+            onPageChanged: value.changeCurruntTab,
+            children: [
+              value.mytabs[0][0],
+              value.mytabs[1][0],
+              value.mytabs[2][0],
+            ],
+          );
+        },
+      )),
       floatingActionButton: const MyFloatingActionButton(),
       bottomNavigationBar: MyBottomNavigatoinBar(
           curruntTab: context.watch<ToggleTabsController>().curruntTab),
