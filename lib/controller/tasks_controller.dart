@@ -8,9 +8,17 @@ class TasksController with ChangeNotifier {
   List<Map> doneTasks = [];
   List<Map> archiveTasks = [];
   TextEditingController inputController = TextEditingController();
+  //is sound on
+  bool isSoundOn = false;
+  //is sound on
   bool isCompleteC = false;
   void onChangeisCompleteC(bool newValue) {
     isCompleteC = newValue;
+    notifyListeners();
+  }
+
+  void setIsSoundOn(bool newValue) {
+    isSoundOn = newValue;
     notifyListeners();
   }
 
