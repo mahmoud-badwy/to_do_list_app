@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "307533647891",
+    "project_id": "make-it-todo",
+    "storage_bucket": "make-it-todo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:307533647891:android:5c97f26b9e9efa43aa6fe6",
+        "android_client_info": {
+          "package_name": "mahmoudbadwy.app.todo.makeit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3RgLN47aHdTUoxuaSCQ1pHQ67assJOuo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
