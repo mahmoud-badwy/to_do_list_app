@@ -33,6 +33,7 @@ class SigninMethods {
     FirebaseAuth credential, {
     required String email,
     required String password,
+    required String name,
     required String route,
     required BuildContext context,
   }) async {
@@ -41,6 +42,8 @@ class SigninMethods {
         email: email,
         password: password,
       );
+      await credential.currentUser!.updateDisplayName(name);
+      print(credential.currentUser);
       // ignore: use_build_context_synchronously
       Navigator.pushReplacementNamed(context, route);
     } on FirebaseAuthException catch (e) {
