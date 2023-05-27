@@ -30,7 +30,6 @@ class SignInController with ChangeNotifier {
   }
 
   checkUser() {
-    print('object');
     if (credential.currentUser != null) {
       print(
           '''=========================\n${credential.currentUser!.displayName}''');

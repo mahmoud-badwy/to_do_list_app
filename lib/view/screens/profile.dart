@@ -16,7 +16,6 @@ class ProfilePage extends StatelessWidget {
           IconButton(
             onPressed: () async {
               await context.read<SignInController>().credential.signOut();
-              print('Signout');
             },
             icon: const Icon(Icons.logout_rounded),
             tooltip: 'logout',
