@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:to_do_list_app/view/screens/sign_in/sign_in.dart';
 import '../../../controller/tasks_controller.dart';
 import '../../../helper/mediaquery.dart';
 import 'made_by_mahmoud.dart';
@@ -35,7 +36,9 @@ class UserIsNotLogin extends StatelessWidget {
           height: context.getHeight() / 50,
         ),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, SignInPage.pageRoute);
+          },
           child: const Text(
             'login',
             style: TextStyle(

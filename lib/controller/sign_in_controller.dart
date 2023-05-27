@@ -1,11 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:to_do_list_app/model/sign_in.dart';
+import 'package:to_do_list_app/model/sign_in_model.dart';
 import 'package:to_do_list_app/view/screens/home.dart';
 
 class SignInController with ChangeNotifier {
   FirebaseAuth credential = FirebaseAuth.instance;
-  User? curruntUser = FirebaseAuth.instance.currentUser;
   SigninMethods signinMethods = SigninMethods();
 
   TextEditingController emailTextEditingController = TextEditingController();
@@ -28,5 +27,15 @@ class SignInController with ChangeNotifier {
       context: context,
       route: MyHomePage.pageRoute,
     );
+  }
+
+  checkUser() {
+    print('object');
+    if (credential.currentUser != null) {
+      print(
+          '''=========================\n${credential.currentUser!.displayName}''');
+    } else {
+      print('''=========================\nempty''');
+    }
   }
 }
