@@ -17,4 +17,12 @@ class SignInController with ChangeNotifier {
         context: context,
         route: MyHomePage.pageRoute);
   }
+
+  void signup(context) {
+    signinMethods.signupWithEmailandPasswordWithFire(credential,
+        email: emailTextEditingController.text,
+        password: passwordTextEditingController.text,
+        context: context,
+        route: MyHomePage.pageRoute);
+  }
 }

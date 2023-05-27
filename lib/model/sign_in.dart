@@ -28,7 +28,35 @@ class SigninMethods {
       );
     }
   }
-  
+
+  void signupWithEmailandPasswordWithFire(
+    FirebaseAuth credential, {
+    required String email,
+    required String password,
+    required String route,
+    required BuildContext context,
+  }) async {
+    try {
+      await credential.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      // ignore: use_build_context_synchronously
+      Navigator.pushReplacementNamed(context, route);
+    } on FirebaseAuthException catch (e) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          backgroundColor: Colors.yellow[200],
+          content: loginMessage(context, message: e.message!),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+        ),
+      );
+    }
+  }
+
   Column loginMessage(BuildContext context, {required String message}) {
     return Column(
       mainAxisSize: MainAxisSize.min,

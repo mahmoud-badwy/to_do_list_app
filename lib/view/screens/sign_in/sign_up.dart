@@ -104,7 +104,9 @@ class SignUpPage extends StatelessWidget {
                 ),
               ),
               MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.read<SignInController>().signup(context);
+                },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
