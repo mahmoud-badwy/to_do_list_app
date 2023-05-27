@@ -5,6 +5,7 @@ import 'package:to_do_list_app/view/screens/home.dart';
 
 class SignInController with ChangeNotifier {
   FirebaseAuth credential = FirebaseAuth.instance;
+  User? curruntUser = FirebaseAuth.instance.currentUser;
   SigninMethods signinMethods = SigninMethods();
 
   TextEditingController emailTextEditingController = TextEditingController();

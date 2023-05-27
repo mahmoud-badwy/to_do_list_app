@@ -13,6 +13,7 @@ class SigninMethods {
     try {
       await credential.signInWithEmailAndPassword(
           email: email, password: password);
+      print(credential.currentUser);
       // ignore: use_build_context_synchronously
       Navigator.pushReplacementNamed(context, route);
     } on FirebaseAuthException catch (e) {

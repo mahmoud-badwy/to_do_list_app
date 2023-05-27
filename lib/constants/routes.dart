@@ -4,7 +4,7 @@ import '../view/screens/home.dart';
 import '../view/screens/profile.dart';
 import '../view/screens/sign_in/sign_up.dart';
 
-String myinitialRoute = SignUpPage.pageRoute;
+String myinitialRoute = SignInPage.pageRoute;
 Map<String, Widget Function(BuildContext)> myRoutes() {
   return {
     MyHomePage.pageRoute: (context) => const MyHomePage(),
