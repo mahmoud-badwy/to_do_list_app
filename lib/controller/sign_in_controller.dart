@@ -6,6 +6,7 @@ import 'package:to_do_list_app/view/screens/home.dart';
 class SignInController with ChangeNotifier {
   FirebaseAuth credential = FirebaseAuth.instance;
   SigninMethods signinMethods = SigninMethods();
+  bool isLogIn = false;
 
   TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController passwordTextEditingController = TextEditingController();
@@ -31,10 +32,9 @@ class SignInController with ChangeNotifier {
 
   checkUser() {
     if (credential.currentUser != null) {
-      print(
-          '''=========================\n${credential.currentUser!.displayName}''');
+      isLogIn = true;
     } else {
-      print('''=========================\nempty''');
+      isLogIn = false;
     }
   }
 }
