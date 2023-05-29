@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_list_app/controller/sign_in_controller.dart';
 import 'package:to_do_list_app/controller/tasks_controller.dart';
+import 'package:to_do_list_app/view/widgets/home/my_alert_widget.dart';
 import 'package:to_do_list_app/view/widgets/profile/made_by_mahmoud.dart';
 
 import '../../../helper/mediaquery.dart';
@@ -35,14 +36,32 @@ class UserIsLogin extends StatelessWidget {
           ),
           Hero(
             tag: 'profile',
-            child: SizedBox(
-              width: context.getWidth() / 2.5,
-              height: context.getWidth() / 2.5,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(200),
-                child: Image.asset(
-                  'assets/me.jpg',
-                  fit: BoxFit.cover,
+            child: InkWell(
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    backgroundColor: Colors.yellow[200],
+                    content: const MyAlertWidget(
+                        text:
+                            'add image will be added in next Updata, check if you are on last Updata',
+                        icon: Icons.done_rounded,
+                        color: Colors.green),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                );
+              },
+              child: SizedBox(
+                width: context.getWidth() / 2.5,
+                height: context.getWidth() / 2.5,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(200),
+                  child: Image.asset(
+                    'assets/images/user.png',
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
