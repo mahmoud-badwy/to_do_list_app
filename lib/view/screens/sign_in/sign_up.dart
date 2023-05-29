@@ -11,54 +11,30 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: context.getWidth() / 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'Welcome !',
-                style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                ),
+      appBar: AppBar(),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: context.getWidth() / 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Welcome !',
+              style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 50,
-                  bottom: 15,
-                ),
-                child: TextField(
-                  controller: context
-                      .watch<SignInController>()
-                      .nameTextEditingController,
-                  decoration: InputDecoration(
-                    hintText: 'Name',
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        20,
-                      ),
-                      borderSide:
-                          const BorderSide(width: 1.0, color: Colors.yellow),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        20,
-                      ),
-                      borderSide:
-                          BorderSide(width: 1.5, color: Colors.yellow[900]!),
-                    ),
-                  ),
-                ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 50,
+                bottom: 15,
               ),
-              TextField(
-                controller: context
-                    .watch<SignInController>()
-                    .emailTextEditingController,
+              child: TextField(
+                controller:
+                    context.watch<SignInController>().nameTextEditingController,
                 decoration: InputDecoration(
-                  hintText: 'Email Address',
+                  hintText: 'Name',
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(
                       20,
@@ -75,52 +51,73 @@ class SignUpPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  bottom: 15,
-                  top: 15,
+            ),
+            TextField(
+              controller:
+                  context.watch<SignInController>().emailTextEditingController,
+              decoration: InputDecoration(
+                hintText: 'Email Address',
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(
+                    20,
+                  ),
+                  borderSide:
+                      const BorderSide(width: 1.0, color: Colors.yellow),
                 ),
-                child: TextField(
-                  controller: context
-                      .watch<SignInController>()
-                      .passwordTextEditingController,
-                  decoration: InputDecoration(
-                    hintText: 'Password',
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        20,
-                      ),
-                      borderSide:
-                          const BorderSide(width: 1.0, color: Colors.yellow),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(
+                    20,
+                  ),
+                  borderSide:
+                      BorderSide(width: 1.5, color: Colors.yellow[900]!),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                bottom: 15,
+                top: 15,
+              ),
+              child: TextField(
+                controller: context
+                    .watch<SignInController>()
+                    .passwordTextEditingController,
+                decoration: InputDecoration(
+                  hintText: 'Password',
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(
+                      20,
                     ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        20,
-                      ),
-                      borderSide:
-                          BorderSide(width: 1.5, color: Colors.yellow[900]!),
+                    borderSide:
+                        const BorderSide(width: 1.0, color: Colors.yellow),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(
+                      20,
                     ),
+                    borderSide:
+                        BorderSide(width: 1.5, color: Colors.yellow[900]!),
                   ),
                 ),
               ),
-              MaterialButton(
-                onPressed: () {
-                  context.read<SignInController>().signup(context);
-                },
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
+            ),
+            MaterialButton(
+              onPressed: () {
+                context.read<SignInController>().signup(context);
+              },
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              color: Colors.yellow,
+              child: const Text(
+                'Sign up',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
                 ),
-                color: Colors.yellow,
-                child: const Text(
-                  'Sign up',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );
