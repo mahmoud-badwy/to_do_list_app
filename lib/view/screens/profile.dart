@@ -12,10 +12,8 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SignInController provider = context.watch<SignInController>();
-    return Center(
-      child: provider.credential.currentUser != null
-          ? const UserIsLogin()
-          : const UserIsNotLogin(),
-    );
+    return provider.credential.currentUser != null
+        ? const UserIsLogin()
+        : const UserIsNotLogin();
   }
 }

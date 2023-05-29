@@ -23,8 +23,8 @@ class UserIsNotLogin extends StatelessWidget {
           Hero(
             tag: 'profile',
             child: SizedBox(
-              width: context.getWidth() / 2.5,
-              height: context.getWidth() / 2.5,
+              width: context.getWidth() / 3,
+              height: context.getWidth() / 3,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(200),
                 child: Image.asset(
