@@ -13,12 +13,14 @@ class UserIsLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SignInController provider = context.watch<SignInController>();
+
     return Scaffold(
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () async {
-              await context.read<SignInController>().credential.signOut();
+            onPressed: () {
+              context.read<SignInController>().signOut(context);
             },
             icon: const Icon(Icons.logout_rounded),
             tooltip: 'logout',
@@ -48,9 +50,9 @@ class UserIsLogin extends StatelessWidget {
           SizedBox(
             height: context.getHeight() / 50,
           ),
-          const Text(
-            'Mahmoud Badwy',
-            style: TextStyle(
+          Text(
+            provider.credential.currentUser!.displayName!,
+            style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w600,
               letterSpacing: 1.4,
