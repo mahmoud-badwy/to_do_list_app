@@ -70,7 +70,19 @@ class TaskWidget extends StatelessWidget {
           children: [
             SlidableAction(
               onPressed: (context) {
-                Share.share('Hello Welcome to FlutterCampus', subject: 'Welcome Message');
+                if (tasks[index]['kind'] == 'done') {
+                  Share.share(
+                    'Hi, I have a new Done task 🥰 thats is ${tasks[index]['note']}',
+                  );
+                } else if (tasks[index]['kind'] == 'archive') {
+                  Share.share(
+                    'Hi, I have a new Done task 🥰 thats is ${tasks[index]['note']}',
+                  );
+                } else {
+                  Share.share(
+                    'Hi, I have a new thats is ${tasks[index]['note']}',
+                  );
+                }
               },
               spacing: 0.5,
               borderRadius: BorderRadius.circular(20),
