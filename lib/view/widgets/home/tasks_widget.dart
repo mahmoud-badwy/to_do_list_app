@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 import '../../../controller/tasks_controller.dart';
 import '../../../controller/toggle_tabs.dart';
 import 'my_alert_widget.dart';
@@ -68,7 +69,9 @@ class TaskWidget extends StatelessWidget {
           motion: const ScrollMotion(),
           children: [
             SlidableAction(
-              onPressed: (context) {},
+              onPressed: (context) {
+                Share.share('Hello Welcome to FlutterCampus', subject: 'Welcome Message');
+              },
               spacing: 0.5,
               borderRadius: BorderRadius.circular(20),
               backgroundColor: const Color(0xFF0392CF),
