@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_list_app/controller/sign_in_controller.dart';
-import '../widgets/profile/user_is_not_login.dart';
+import 'package:to_do_list_app/view/widgets/profile/user_is_login.dart';
+import 'package:to_do_list_app/view/widgets/profile/user_is_not_login.dart';
 
 class ProfilePage extends StatelessWidget {
   static const String pageRoute = 'profile_page';
@@ -10,21 +11,11 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: () async {
-              await context.read<SignInController>().credential.signOut();
-            },
-            icon: const Icon(Icons.logout_rounded),
-            tooltip: 'logout',
-          ),
-        ],
-      ),
-      body: const Center(
-        child: UserIsNotLogin(),
-      ),
+    SignInController provider = context.watch<SignInController>();
+    return Center(
+      child: provider.credential.currentUser != null
+          ? const UserIsLogin()
+          : const UserIsNotLogin(),
     );
   }
 }
