@@ -34,25 +34,25 @@ class UserIsLogin extends StatelessWidget {
           const Spacer(
             flex: 2,
           ),
-          Hero(
-            tag: 'profile',
-            child: InkWell(
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (context) => AlertDialog(
-                    backgroundColor: Colors.yellow[200],
-                    content: const MyAlertWidget(
-                        text:
-                            'add image will be added in next Updata, check if you are on last Updata',
-                        icon: Icons.done_rounded,
-                        color: Colors.green),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
+          InkWell(
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  backgroundColor: Colors.yellow[200],
+                  content: const MyAlertWidget(
+                      text:
+                          'add image will be added in next Updata, check if you are on last Updata',
+                      icon: Icons.done_rounded,
+                      color: Colors.green),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                );
-              },
+                ),
+              );
+            },
+            child: Hero(
+              tag: 'profile',
               child: SizedBox(
                 width: context.getWidth() / 2.5,
                 height: context.getWidth() / 2.5,
