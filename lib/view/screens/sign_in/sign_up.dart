@@ -14,9 +14,8 @@ class SignUpPage extends StatelessWidget {
       appBar: AppBar(),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: context.getWidth() / 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
+          physics: const BouncingScrollPhysics(),
           children: [
             const Text(
               'Welcome !',
