@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import '../../../constants/sizes.dart';
 import '../../../controller/toggle_tabs.dart';
 
 class MyBottomNaviagtionBarItem extends StatelessWidget {
@@ -36,7 +37,7 @@ class MyBottomNaviagtionBarItem extends StatelessWidget {
           children: [
             Icon(
               icon,
-              size: 27.sp,
+              size: MySizes.iconSize,
             ),
             Visibility(
               visible: isSelected2!,
