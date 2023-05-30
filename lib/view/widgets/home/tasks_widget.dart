@@ -72,15 +72,15 @@ class TaskWidget extends StatelessWidget {
               onPressed: (context) {
                 if (tasks[index]['kind'] == 'done') {
                   Share.share(
-                    'Hi, I have a new Done task 🥰 thats is ${tasks[index]['note']}',
+                    'Hi, I have a new Done task 🥰 that\'s ${tasks[index]['note']}',
                   );
                 } else if (tasks[index]['kind'] == 'archive') {
                   Share.share(
-                    'Hi, I have a new Done task 🥰 thats is ${tasks[index]['note']}',
+                    'Hi, I have a new archive task 🥰 that\'s ${tasks[index]['note']}',
                   );
                 } else {
                   Share.share(
-                    'Hi, I have a new thats is ${tasks[index]['note']}',
+                    'Hi, I have a new task that\'s ${tasks[index]['note']}',
                   );
                 }
               },
