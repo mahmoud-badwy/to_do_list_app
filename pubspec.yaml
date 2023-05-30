@@ -20,6 +20,7 @@ dependencies:
   firebase_core: ^2.13.0
   firebase_auth: ^4.6.1
   share_plus: ^7.0.2
+  flutter_screenutil: ^5.7.0
 
 dev_dependencies:
   flutter_test:
