@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: 60,
+        leadingWidth: 50,
         centerTitle: true,
         leading: Padding(
           padding: const EdgeInsets.only(
@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 borderRadius: BorderRadius.circular(60),
                 child: Image.asset(
                   'assets/images/user.png',
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 ),
               ),
             ),

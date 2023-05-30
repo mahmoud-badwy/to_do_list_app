@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../../../controller/tasks_controller.dart';
 import '../../../helper/mediaquery.dart';
@@ -19,16 +20,17 @@ class AllTasksTab extends StatelessWidget {
             itemBuilder: (context, index) {
               return TaskWidget(
                 index: index,
-                tasks: value.normalTasks, screen: 'normal',
+                tasks: value.normalTasks,
+                screen: 'normal',
               );
             },
           );
         }
-        return const Center(
+        return Center(
           child: Text(
             'you have no tasks',
             style: TextStyle(
-              fontSize: 30,
+              fontSize: 30.sp,
             ),
           ),
         );

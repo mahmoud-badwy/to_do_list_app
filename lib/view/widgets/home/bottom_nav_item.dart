@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../../../controller/toggle_tabs.dart';
-import '../../../helper/mediaquery.dart';
 
 class MyBottomNaviagtionBarItem extends StatelessWidget {
   const MyBottomNaviagtionBarItem({
@@ -28,7 +28,7 @@ class MyBottomNaviagtionBarItem extends StatelessWidget {
         ),
         padding: const EdgeInsets.all(10),
         duration: const Duration(milliseconds: 200),
-        width: isSelected! ? context.getWidth() / 4 : context.getWidth() / 9.5,
+        width: isSelected! ? 100.w : 45.w,
         child: Row(
           // mainAxisAlignment:
           //     isSelected! ? MainAxisAlignment.start : MainAxisAlignment.center,
@@ -36,7 +36,7 @@ class MyBottomNaviagtionBarItem extends StatelessWidget {
           children: [
             Icon(
               icon,
-              size: 27,
+              size: 27.sp,
             ),
             Visibility(
               visible: isSelected2!,
@@ -49,8 +49,8 @@ class MyBottomNaviagtionBarItem extends StatelessWidget {
                   ),
                   Text(
                     lebel,
-                    style: const TextStyle(
-                      fontSize: 18,
+                    style: TextStyle(
+                      fontSize: 18.sp,
                     ),
                   ),
                 ],
