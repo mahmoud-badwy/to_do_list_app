@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../../../controller/tasks_controller.dart';
 
@@ -14,49 +15,52 @@ class MyFloatingActionButton extends StatelessWidget {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: const Text(
+            title: Text(
               'Add New Task',
               style: TextStyle(
-                fontSize: 22,
+                fontSize: 22.sp,
               ),
             ),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                TextField(
-                  autofocus: true,
-                  controller: context.watch<TasksController>().inputController,
-                  decoration: const InputDecoration(
-                    hintText: 'task',
+            content: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  TextField(
+                    autofocus: true,
+                    controller:
+                        context.watch<TasksController>().inputController,
+                    decoration: const InputDecoration(
+                      hintText: 'task',
+                    ),
+                    style: TextStyle(
+                      fontSize: 20.sp,
+                    ),
+                    onSubmitted: (value) {
+                      context.read<TasksController>().addTask(
+                            taskName: value,
+                            context: context,
+                          );
+                    },
                   ),
-                  style: const TextStyle(
-                    fontSize: 20,
+                  CheckboxListTile(
+                    value: context.watch<TasksController>().isCompleteC,
+                    onChanged: (value) => context
+                        .read<TasksController>()
+                        .onChangeisCompleteC(value!),
+                    title: const Text('mark as read'),
                   ),
-                  onSubmitted: (value) {
-                    context.read<TasksController>().addTask(
-                          taskName: value,
-                          context: context,
-                        );
-                  },
-                ),
-                CheckboxListTile(
-                  value: context.watch<TasksController>().isCompleteC,
-                  onChanged: (value) => context
-                      .read<TasksController>()
-                      .onChangeisCompleteC(value!),
-                  title: const Text('mark as read'),
-                ),
-              ],
+                ],
+              ),
             ),
             actions: [
               ElevatedButton(
                 onPressed: () {
                   context.read<TasksController>().onCancel(context);
                 },
-                child: const Text(
+                child: Text(
                   'cancel',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 18.sp,
                   ),
                 ),
               ),
@@ -66,10 +70,10 @@ class MyFloatingActionButton extends StatelessWidget {
                         context: context,
                       );
                 },
-                child: const Text(
+                child: Text(
                   'add',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 18.sp,
                   ),
                 ),
               ),
