@@ -28,110 +28,112 @@ class UserIsLogin extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          const Spacer(
-            flex: 2,
-          ),
-          InkWell(
-            onTap: () {
-              showDialog(
-                context: context,
-                builder: (context) => AlertDialog(
-                  backgroundColor: Colors.yellow[200],
-                  content: const MyAlertWidget(
-                      text:
-                          'add image will be added in next Updata, check if you are on last Updata',
-                      icon: Icons.done_rounded,
-                      color: Colors.green),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const Spacer(
+              flex: 2,
+            ),
+            InkWell(
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    backgroundColor: Colors.yellow[200],
+                    content: const MyAlertWidget(
+                        text:
+                            'add image will be added in next Updata, check if you are on last Updata',
+                        icon: Icons.done_rounded,
+                        color: Colors.green),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                   ),
-                ),
-              );
-            },
-            child: Hero(
-              tag: 'profile',
-              child: SizedBox(
-                width: context.getWidth() / 2.5,
-                height: context.getWidth() / 2.5,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(200),
-                  child: Image.asset(
-                    'assets/images/user.png',
-                    fit: BoxFit.cover,
+                );
+              },
+              child: Hero(
+                tag: 'profile',
+                child: SizedBox(
+                  width: context.getWidth() / 2.5,
+                  height: context.getWidth() / 2.5,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(200),
+                    child: Image.asset(
+                      'assets/images/user.png',
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          SizedBox(
-            height: context.getHeight() / 50,
-          ),
-          Text(
-            provider.credential.currentUser!.displayName!,
-            style: const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.w600,
-              letterSpacing: 1.4,
+            SizedBox(
+              height: context.getHeight() / 50,
             ),
-          ),
-          const Spacer(
-            flex: 1,
-          ),
-          Consumer<TasksController>(
-            builder: (context, value, child) {
-              return Column(
-                children: [
-                  SwitchListTile(
-                    activeTrackColor: Colors.green[200],
-                    activeColor: Colors.black,
-                    title: const Text(
-                      'make voice on done task',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: 1,
-                      ),
-                    ),
-                    value: value.isSoundOn,
-                    onChanged: (newValue) {
-                      value.setIsSoundOn(newValue);
-                    },
-                  ),
-                  Visibility(
-                    visible: value.isSoundOn,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
-                      child: SwitchListTile(
-                        activeTrackColor: Colors.green[200],
-                        activeColor: Colors.black,
-                        title: const Text(
-                          'play full sound',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 1,
-                          ),
+            Text(
+              provider.credential.currentUser!.displayName!,
+              style: const TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w600,
+                letterSpacing: 1.4,
+              ),
+            ),
+            const Spacer(
+              flex: 1,
+            ),
+            Consumer<TasksController>(
+              builder: (context, value, child) {
+                return Column(
+                  children: [
+                    SwitchListTile(
+                      activeTrackColor: Colors.green[200],
+                      activeColor: Colors.black,
+                      title: const Text(
+                        'make voice on done task',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 1,
                         ),
-                        value: value.isFullSound,
-                        onChanged: (newValue) {
-                          value.setIsFullSound(newValue);
-                        },
+                      ),
+                      value: value.isSoundOn,
+                      onChanged: (newValue) {
+                        value.setIsSoundOn(newValue);
+                      },
+                    ),
+                    Visibility(
+                      visible: value.isSoundOn,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20.0),
+                        child: SwitchListTile(
+                          activeTrackColor: Colors.green[200],
+                          activeColor: Colors.black,
+                          title: const Text(
+                            'play full sound',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: 1,
+                            ),
+                          ),
+                          value: value.isFullSound,
+                          onChanged: (newValue) {
+                            value.setIsFullSound(newValue);
+                          },
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              );
-            },
-          ),
-          const Spacer(),
-          const MadeByMahmoud(),
-          const Spacer(
-            flex: 2,
-          ),
-        ],
+                  ],
+                );
+              },
+            ),
+            const Spacer(),
+            const MadeByMahmoud(),
+            const Spacer(
+              flex: 2,
+            ),
+          ],
+        ),
       ),
     );
   }
