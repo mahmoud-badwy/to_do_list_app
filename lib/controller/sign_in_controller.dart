@@ -42,9 +42,10 @@ class SignInController with ChangeNotifier {
       builder: (context) => AlertDialog(
         backgroundColor: Colors.yellow[200],
         content: const MyAlertWidget(
-            text: 'SignOut Successfully',
-            icon: Icons.done_rounded,
-            color: Colors.green),
+          text: 'SignOut Successfully',
+          icon: Icons.done_rounded,
+          color: Colors.green,
+        ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_list_app/controller/sign_in_controller.dart';
 import 'package:to_do_list_app/controller/tasks_controller.dart';
@@ -29,11 +30,12 @@ class UserIsLogin extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const Spacer(
-              flex: 2,
+            SizedBox(
+              height: 100.sp,
             ),
             InkWell(
               onTap: () {
@@ -55,8 +57,8 @@ class UserIsLogin extends StatelessWidget {
               child: Hero(
                 tag: 'profile',
                 child: SizedBox(
-                  width: context.getWidth() / 2.5,
-                  height: context.getWidth() / 2.5,
+                  width: 150.sp,
+                  height: 150.sp,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(200),
                     child: Image.asset(
@@ -77,9 +79,6 @@ class UserIsLogin extends StatelessWidget {
                 fontWeight: FontWeight.w600,
                 letterSpacing: 1.4,
               ),
-            ),
-            const Spacer(
-              flex: 1,
             ),
             Consumer<TasksController>(
               builder: (context, value, child) {
@@ -127,10 +126,12 @@ class UserIsLogin extends StatelessWidget {
                 );
               },
             ),
-            const Spacer(),
+            SizedBox(
+              height: 50.h,
+            ),
             const MadeByMahmoud(),
-            const Spacer(
-              flex: 2,
+            SizedBox(
+              height: 20.h,
             ),
           ],
         ),
