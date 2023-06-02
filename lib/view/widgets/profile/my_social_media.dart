@@ -9,34 +9,36 @@ class MySocialMedia extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        const SocialMediaElement(
-          text: 'FaceBook',
-          url: AppLinks.facebookLink,
-        ),
-        const SocialMediaElement(
-          text: 'GitHub',
-          url: AppLinks.githubLink,
-        ),
-        const SocialMediaElement(
-          text: 'LinkedIn',
-          url: AppLinks.linkedinLink,
-        ),
-        SizedBox(
-          height: context.getHeight() / 40,
-        ),
-        InkWell(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: CircleAvatar(
-            backgroundColor: Colors.red[400],
-            child: const Icon(Icons.close, color: Colors.white),
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          const SocialMediaElement(
+            text: 'FaceBook',
+            url: AppLinks.facebookLink,
           ),
-        )
-      ],
+          const SocialMediaElement(
+            text: 'GitHub',
+            url: AppLinks.githubLink,
+          ),
+          const SocialMediaElement(
+            text: 'LinkedIn',
+            url: AppLinks.linkedinLink,
+          ),
+          SizedBox(
+            height: context.getHeight() / 40,
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: CircleAvatar(
+              backgroundColor: Colors.red[400],
+              child: const Icon(Icons.close, color: Colors.white),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
