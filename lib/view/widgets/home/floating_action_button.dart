@@ -15,16 +15,17 @@ class MyFloatingActionButton extends StatelessWidget {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text(
-              'Add New Task',
-              style: TextStyle(
-                fontSize: 22.sp,
-              ),
-            ),
             content: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text(
+                    'Add New Task',
+                    style: TextStyle(
+                      fontSize: 22.sp,
+                    ),
+                  ),
                   TextField(
                     autofocus: true,
                     controller:
@@ -49,35 +50,38 @@ class MyFloatingActionButton extends StatelessWidget {
                         .onChangeisCompleteC(value!),
                     title: const Text('mark as read'),
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          context.read<TasksController>().onCancel(context);
+                        },
+                        child: Text(
+                          'cancel',
+                          style: TextStyle(
+                            fontSize: 18.sp,
+                          ),
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          context.read<TasksController>().addTask(
+                                context: context,
+                              );
+                        },
+                        child: Text(
+                          'add',
+                          style: TextStyle(
+                            fontSize: 18.sp,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
-            actions: [
-              ElevatedButton(
-                onPressed: () {
-                  context.read<TasksController>().onCancel(context);
-                },
-                child: Text(
-                  'cancel',
-                  style: TextStyle(
-                    fontSize: 18.sp,
-                  ),
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  context.read<TasksController>().addTask(
-                        context: context,
-                      );
-                },
-                child: Text(
-                  'add',
-                  style: TextStyle(
-                    fontSize: 18.sp,
-                  ),
-                ),
-              ),
-            ],
           );
         },
       );
