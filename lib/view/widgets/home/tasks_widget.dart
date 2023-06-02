@@ -22,6 +22,14 @@ class TaskWidget extends StatelessWidget {
     ToggleTabsController toggleTabsController =
         context.read<ToggleTabsController>();
     TasksController tasksController = context.read<TasksController>();
+    getDataInput(input, output) {
+      if (toggleTabsController.curruntTab == 2) {
+        return input;
+      } else {
+        return output;
+      }
+    }
+
     return Padding(
       padding: const EdgeInsets.only(
         top: 25,
@@ -55,12 +63,8 @@ class TaskWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               backgroundColor: Colors.green[200]!,
               foregroundColor: Colors.white,
-              icon: toggleTabsController.curruntTab == 2
-                  ? Icons.unarchive
-                  : Icons.unarchive,
-              label: toggleTabsController.curruntTab == 2
-                  ? 'UnArchive'
-                  : 'Archive',
+              icon: getDataInput(Icons.unarchive, Icons.archive),
+              label: getDataInput('UnArchive', 'Archive'),
             ),
           ],
         ),
