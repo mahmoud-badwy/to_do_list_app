@@ -29,7 +29,11 @@ class MyBottomNaviagtionBarItem extends StatelessWidget {
         ),
         padding: const EdgeInsets.all(10),
         duration: const Duration(milliseconds: 200),
-        width: isSelected! ? 110.sp : 50.sp,
+        width: isSelected!
+            ? id == 2
+                ? 125.sp
+                : 110.sp
+            : 50.sp,
         child: Row(
           // mainAxisAlignment:
           //     isSelected! ? MainAxisAlignment.start : MainAxisAlignment.center,
