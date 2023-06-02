@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:to_do_list_app/controller/sign_in_controller.dart';
+import '../../controller/sign_in_controller.dart';
 import '../../controller/tasks_controller.dart';
 import '../../controller/toggle_tabs.dart';
 import 'profile.dart';

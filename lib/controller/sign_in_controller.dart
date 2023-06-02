@@ -57,10 +57,14 @@ class SignInController with ChangeNotifier {
   }
 
   checkUser() {
-    if (credential.currentUser != null) {
-      isLogIn = true;
-    } else {
-      isLogIn = false;
+    try {
+      if (credential.currentUser != null) {
+        isLogIn = true;
+      } else {
+        isLogIn = false;
+      }
+    } catch (e) {
+      print(e);
     }
   }
 }
