@@ -2,7 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:to_do_list_app/model/sign_in_model.dart';
 import 'package:to_do_list_app/view/screens/home.dart';
-import 'package:to_do_list_app/view/widgets/home/my_alert_widget.dart';
+
+import '../view/widgets/home/my_alert_widget.dart';
 
 class SignInController with ChangeNotifier {
   FirebaseAuth credential = FirebaseAuth.instance;
@@ -35,23 +36,23 @@ class SignInController with ChangeNotifier {
   }
 
   void signOut(BuildContext context) async {
-    await credential.signOut();
-    // ignore: use_build_context_synchronously
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: Colors.yellow[200],
-        content: const MyAlertWidget(
-          text: 'SignOut Successfully',
-          icon: Icons.done_rounded,
-          color: Colors.green,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-      ),
-    );
-    // checkUser();
+    await credential.signOut().then(
+          (value) => showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              backgroundColor: Colors.yellow[200],
+              content: const MyAlertWidget(
+                text: 'SignOut Successfully',
+                icon: Icons.done_rounded,
+                color: Colors.green,
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+          ),
+        );
+
     notifyListeners();
   }
 
