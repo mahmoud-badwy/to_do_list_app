@@ -14,7 +14,7 @@ class ToggleTabsController with ChangeNotifier {
   void changeCurruntTab(int newCurruntTab) {
     curruntTab = newCurruntTab;
     pageViewController.jumpToPage(
-      newCurruntTab,
+      curruntTab,
     );
     if (newCurruntTab == 0) {
       mytabs[0][1] = true;
