@@ -11,11 +11,11 @@ class SigninMethods {
     required BuildContext context,
   }) async {
     try {
-      await credential.signInWithEmailAndPassword(
-          email: email, password: password);
-      print(credential.currentUser);
-      // ignore: use_build_context_synchronously
-      Navigator.pushReplacementNamed(context, route);
+      await credential
+          .signInWithEmailAndPassword(email: email, password: password)
+          .then(
+            (value) => Navigator.pushReplacementNamed(context, route),
+          );
     } on FirebaseAuthException catch (e) {
       showDialog(
         context: context,
@@ -43,10 +43,9 @@ class SigninMethods {
         email: email,
         password: password,
       );
-      await credential.currentUser!.updateDisplayName(name);
-      print(credential.currentUser);
-      // ignore: use_build_context_synchronously
-      Navigator.pushReplacementNamed(context, route);
+      await credential.currentUser!.updateDisplayName(name).then(
+            (value) => Navigator.pushReplacementNamed(context, route),
+          );
     } on FirebaseAuthException catch (e) {
       showDialog(
         context: context,

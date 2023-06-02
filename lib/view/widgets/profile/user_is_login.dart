@@ -23,20 +23,6 @@ class UserIsLogin extends StatelessWidget {
           IconButton(
             onPressed: () {
               context.read<SignInController>().signOut(context);
-              // showDialog(
-              //   context: context,
-              //   builder: (context) => AlertDialog(
-              //     backgroundColor: Colors.yellow[200],
-              //     content: const MyAlertWidget(
-              //       text: 'SignOut Successfully',
-              //       icon: Icons.done_rounded,
-              //       color: Colors.green,
-              //     ),
-              //     shape: RoundedRectangleBorder(
-              //       borderRadius: BorderRadius.circular(20),
-              //     ),
-              //   ),
-              // );
             },
             icon: const Icon(Icons.logout_rounded),
             tooltip: 'logout',
