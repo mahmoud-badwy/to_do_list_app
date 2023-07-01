@@ -5,10 +5,10 @@ class ActionsController with ChangeNotifier {
   Future<void> launchLink(String url) async {
     Uri urlParse = Uri.parse('https://$url');
 
-    if (await canLaunchUrl(urlParse)) {
-      await launchUrl(mode: LaunchMode.externalNonBrowserApplication, urlParse);
-    } else {
-      throw 'Could not launch https://$url';
-    }
+    // if (await canLaunchUrl(urlParse)) {
+    await launchUrl(mode: LaunchMode.externalNonBrowserApplication, urlParse);
+    // } else {
+    //   throw 'Could not launch https://$url';
+    // }
   }
 }
