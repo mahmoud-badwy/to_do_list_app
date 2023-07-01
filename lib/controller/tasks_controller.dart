@@ -1,6 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import '../constants/sql_db.dart';
+import '../constants/databases/notes_sql.dart';
 import '../view/widgets/home/my_alert_widget.dart';
 
 class TasksController with ChangeNotifier {
