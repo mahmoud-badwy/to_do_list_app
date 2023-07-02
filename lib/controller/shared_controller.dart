@@ -13,11 +13,8 @@ class SharedController with ChangeNotifier {
 
   Future<void> insertData() async {
     if (allData.isEmpty) {
+      // ignore: unused_local_variable
       var response = mySqlDb.insertData('shareds');
-      print('inserted');
-    } else {
-      print('data already added');
-      print(allData);
-    }
+    } else {}
   }
 }

@@ -19,7 +19,7 @@ class ToggleTabsController with ChangeNotifier {
         curruntTab,
       );
     } catch (e) {
-      print(e);
+      // catch error
     }
 
     if (newCurruntTab == 0) {

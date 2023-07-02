@@ -216,6 +216,7 @@ class TasksController with ChangeNotifier {
   void setIsSoundOn(bool newValue) async {
     await player.stop();
     isSoundOn = newValue;
+    // ignore: unused_local_variable
     var response = mySqlDbShareds.updateData(
       'shareds',
       {
@@ -229,6 +230,7 @@ class TasksController with ChangeNotifier {
 
   void setIsFullSound(bool newValue) {
     isFullSound = newValue;
+    // ignore: unused_local_variable
     var response = mySqlDbShareds.updateData(
       'shareds',
       {

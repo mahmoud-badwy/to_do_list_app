@@ -64,7 +64,7 @@ class SignInController with ChangeNotifier {
         isLogIn = false;
       }
     } catch (e) {
-      print(e);
+      // catch error
     }
   }
 }

@@ -39,6 +39,7 @@ class MySharedSqlDb {
       "name": "voice",
       "isOn": "false",
     });
+    // ignore: unused_local_variable
     int response2 = await myDb.insert(table, {
       "name": "complete",
       "isOn": "false",
