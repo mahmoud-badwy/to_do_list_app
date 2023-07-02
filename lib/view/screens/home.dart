@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../controller/shared_controller.dart';
 import '../../controller/sign_in_controller.dart';
 import '../../controller/tasks_controller.dart';
 import '../../controller/toggle_tabs.dart';
@@ -17,13 +18,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  late List<Map> allDate;
   @override
   void initState() {
     Future.delayed(
       Duration.zero,
-      () {
+      () async {
         context.read<TasksController>().getData();
         context.read<SignInController>().checkUser();
+        await context.read<SharedController>().getData().whenComplete(
+              () => context.read<SharedController>().insertData(),
+            );
       },
     );
 
