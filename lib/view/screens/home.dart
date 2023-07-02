@@ -27,8 +27,11 @@ class _MyHomePageState extends State<MyHomePage> {
         context.read<TasksController>().getData();
         context.read<SignInController>().checkUser();
         await context.read<SharedController>().getData().whenComplete(
-              () => context.read<SharedController>().insertData(),
-            );
+          () {
+            context.read<SharedController>().insertData();
+            context.read<TasksController>().getSharedData();
+          },
+        );
       },
     );
 

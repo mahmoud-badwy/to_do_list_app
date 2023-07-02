@@ -11,7 +11,7 @@ class SharedController with ChangeNotifier {
     allData = await response;
   }
 
-  insertData() async {
+  Future<void> insertData() async {
     if (allData.isEmpty) {
       var response = mySqlDb.insertData('shareds');
       print('inserted');
@@ -20,6 +20,4 @@ class SharedController with ChangeNotifier {
       print(allData);
     }
   }
-
-  Future<void> changeData() async {}
 }

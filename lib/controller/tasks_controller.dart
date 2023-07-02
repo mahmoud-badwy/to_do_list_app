@@ -1,11 +1,13 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import '../constants/databases/notes_sql.dart';
+import '../constants/databases/shared_sql.dart';
 import '../view/widgets/home/my_alert_widget.dart';
 
 class TasksController with ChangeNotifier {
   final player = AudioPlayer();
-  MySqlDb mySqlDb = MySqlDb();
+  MySqlDb mySqlDbTasks = MySqlDb();
+  MySharedSqlDb mySqlDbShareds = MySharedSqlDb();
   List<Map> allTasks = [];
   List<Map> normalTasks = [];
   List<Map> doneTasks = [];
@@ -21,17 +23,6 @@ class TasksController with ChangeNotifier {
     notifyListeners();
   }
 
-  void setIsSoundOn(bool newValue) async {
-    await player.stop();
-    isSoundOn = newValue;
-    notifyListeners();
-  }
-
-  void setIsFullSound(bool newValue) {
-    isFullSound = newValue;
-    notifyListeners();
-  }
-
   Future<void> playSound() async {
     if (isSoundOn) {
       await player.stop();
@@ -44,7 +35,7 @@ class TasksController with ChangeNotifier {
   }
 
   Future<void> getData() async {
-    Future<List<Map>> response = mySqlDb.readData('notes');
+    Future<List<Map>> response = mySqlDbTasks.readData('notes');
     allTasks = await response;
     normalTasks.clear();
     doneTasks.clear();
@@ -68,14 +59,14 @@ class TasksController with ChangeNotifier {
       bool isComplete, int index, int id, String screen) async {
     if (screen == 'normal') {
       if (normalTasks[index]['typeDone'] == 'done') {
-        await mySqlDb.updateData(
+        await mySqlDbTasks.updateData(
           'notes',
           {'typeDone': 'notDone', 'kind': 'normal'},
           id,
         );
       } else {
         playSound();
-        await mySqlDb.updateData(
+        await mySqlDbTasks.updateData(
           'notes',
           {'typeDone': 'done', 'kind': 'done'},
           id,
@@ -83,14 +74,14 @@ class TasksController with ChangeNotifier {
       }
     } else if (screen == 'done') {
       if (doneTasks[index]['typeDone'] == 'done') {
-        await mySqlDb.updateData(
+        await mySqlDbTasks.updateData(
           'notes',
           {'typeDone': 'notDone', 'kind': 'normal'},
           id,
         );
       } else {
         playSound();
-        await mySqlDb.updateData(
+        await mySqlDbTasks.updateData(
           'notes',
           {'typeDone': 'done', 'kind': 'done'},
           id,
@@ -104,7 +95,7 @@ class TasksController with ChangeNotifier {
   }
 
   void addToArchive(int id) {
-    mySqlDb.updateData(
+    mySqlDbTasks.updateData(
         'notes',
         {
           'kind': 'archive',
@@ -116,14 +107,14 @@ class TasksController with ChangeNotifier {
 
   void removeFromArchive(int id, {required String typeDone}) {
     if (typeDone == 'done') {
-      mySqlDb.updateData(
+      mySqlDbTasks.updateData(
           'notes',
           {
             'kind': 'done',
           },
           id);
     } else {
-      mySqlDb.updateData(
+      mySqlDbTasks.updateData(
           'notes',
           {
             'kind': 'normal',
@@ -136,7 +127,7 @@ class TasksController with ChangeNotifier {
   }
 
   void delete(int id) {
-    mySqlDb.deleteData('notes', id);
+    mySqlDbTasks.deleteData('notes', id);
     getData();
     notifyListeners();
   }
@@ -150,7 +141,7 @@ class TasksController with ChangeNotifier {
   void addTask({String? taskName, required BuildContext context}) async {
     if (inputController.text.isNotEmpty) {
       // ignore: unused_local_variable
-      int response = await mySqlDb.insertData(
+      int response = await mySqlDbTasks.insertData(
         'notes',
         {
           'note': taskName ?? inputController.text,
@@ -185,7 +176,7 @@ class TasksController with ChangeNotifier {
 
   Future<void> deleteAll() async {
     for (var element in allTasks) {
-      mySqlDb.deleteData('notes', element['id']);
+      mySqlDbTasks.deleteData('notes', element['id']);
     }
     getData();
     notifyListeners();
@@ -195,7 +186,7 @@ class TasksController with ChangeNotifier {
     if (normalTasks.isNotEmpty) {
       playSound();
       for (var element in normalTasks) {
-        mySqlDb.updateData(
+        mySqlDbTasks.updateData(
           'notes',
           {'typeDone': 'done', 'kind': 'done'},
           element['id'],
@@ -209,7 +200,7 @@ class TasksController with ChangeNotifier {
 
   archiveAll() {
     for (var element in allTasks) {
-      mySqlDb.updateData(
+      mySqlDbTasks.updateData(
         'notes',
         {
           'kind': 'archive',
@@ -219,5 +210,50 @@ class TasksController with ChangeNotifier {
     }
     getData();
     notifyListeners();
+  }
+
+  // ===============check is sound on or not =======
+  void setIsSoundOn(bool newValue) async {
+    await player.stop();
+    isSoundOn = newValue;
+    var response = mySqlDbShareds.updateData(
+      'shareds',
+      {
+        "name": "voice",
+        "isOn": isSoundOn.toString(),
+      },
+      1,
+    );
+    notifyListeners();
+  }
+
+  void setIsFullSound(bool newValue) {
+    isFullSound = newValue;
+    var response = mySqlDbShareds.updateData(
+      'shareds',
+      {
+        "name": "complete",
+        "isOn": isFullSound.toString(),
+      },
+      2,
+    );
+    notifyListeners();
+  }
+
+  List alldataShareds = [];
+  Future<void> getSharedData() async {
+    Future<List<Map>> response = mySqlDbShareds.readData('shareds');
+
+    alldataShareds = await response;
+    if (alldataShareds[0]['isOn'] == 'true') {
+      isSoundOn = true;
+    } else {
+      isSoundOn = false;
+    }
+    if (alldataShareds[1]['isOn'] == 'true') {
+      isFullSound = true;
+    } else {
+      isFullSound = false;
+    }
   }
 }
