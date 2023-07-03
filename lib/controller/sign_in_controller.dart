@@ -10,6 +10,7 @@ class SignInController with ChangeNotifier {
 
   SigninMethods signinMethods = SigninMethods();
   bool isLogIn = false;
+  bool obscurePassword = true;
 
   TextEditingController emailTextEditingController = TextEditingController();
   TextEditingController passwordTextEditingController = TextEditingController();
@@ -66,5 +67,10 @@ class SignInController with ChangeNotifier {
     } catch (e) {
       // catch error
     }
+  }
+
+  void obscureOnPressed() {
+    obscurePassword = !obscurePassword;
+    notifyListeners();
   }
 }
