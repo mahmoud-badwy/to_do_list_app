@@ -38,7 +38,6 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/me.jpg
     - assets/social_media_icons/
     - assets/images/
     - assets/sounds/
