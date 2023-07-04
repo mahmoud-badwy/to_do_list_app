@@ -1,74 +1,49 @@
-# Make It
+## Make It
 
-## Description
-
-Your GitHub profile is an extremely important aspect of your public identity as a developer. A well-crafted one allows you to show off your work to other developers as well as potential employers. An important component of your GitHub profile—and one that many new developers often overlook—is the README.md file.
-
-The quality of a README often differentiates a good project from a bad project. A good one takes advantage of the opportunity to explain and showcase what your application does, justify the technologies used, and even talk about some of the challenges you faced and features you hope to implement in the future. A good README helps you stand out among the large crowd of developers putting their work on GitHub.
-
-There's no one right way to structure a good README. There is one very wrong way, however, and that is to not include a README at all or to create a very anemic one. This guide outlines a few best practices. As you progress in your career, you will develop your own ideas about what makes a good README.
-
-At a minimum, your project README needs a title and a short description explaining the what, why, and how. What was your motivation? Why did you build this project? (Note: The answer is not "Because it was a homework assignment.") What problem does it solve? What did you learn? What makes your project stand out?
-
-Lastly, if your project is deployed, include a link to the deployed application here.
-
-If you're new to Markdown, read the GitHub guide on [Mastering Markdown](https://guides.github.com/features/mastering-markdown/).
-
-If you need an example of a good README, check out [the VSCode repository](https://github.com/microsoft/vscode).
-
-
-## Table of Contents (Optional)
-
-If your README is very long, add a table of contents to make it easy for users to find what they need.
-
-* [Used Technologies](#techologies)
-* [Installation](#installation)
-* [Usage](#usage)
-* [Credits](#credits)
-* [License](#license)
-
-## Used Techologies
-
-This projects debends on Flutter framework, but i used also :
-
-* [Flutter](#installation)
-* [Provider - State Management](#usage)
-* [Firebase - Auth System](#credits)
-* [sqflite - local Database](#license)
-* [audioplayers](#license)
-* [flutter_screenutil - responsive design](#license)
-
-
-## Installation
-
-First, You should install [Flutter and Dart](https://flutter.dev/) then download project from this repo
-```md
-https://github.com/mahmoud-badwy/to_do_list_app.git
-```
-
-you can preview app on playstore
-```md
-https://github.com/mahmoud-badwy/to_do_list_app.git
-```
-
----
-
-
-## Badges
-
-![badmath]()
-
+Make It is a mobile application built using the Flutter framework that helps users manage their tasks and stay organized. It uses the Model-View-Controller (MVC) pattern to organize its code and several packages, including provider, sqflite, firebase authentication, share plus, audioplayers, and flutter_screenutil.
 
 ## Features
 
+- Create, edit, and delete tasks
+- Categorize tasks into different lists
+- Share tasks with others through social media platforms, email, or text message
+- play audio files after finnish tasks
+- Create and save notes
+- Set goals and track progress
+- Track time spent on tasks
+- View statistics and reports
+- Sync data across devices
+
+## Installation
+
+To preview the app, you will need to download it from play store `https://play.google.com/store/apps/details?id=mahmoudbadwy.app.todo.makeit`
 
 
-## Release
+## Packages Used
 
-you can preview app on playstore
-```md
-https://github.com/mahmoud-badwy/to_do_list_app.git
-```
+- provider: For manage data in app (state management)
+- sqflite: For local data storage and retrieval
+- firebase_auth: For user authentication and account management
+- share_plus: For sharing tasks with others
+- audioplayers: For adding audio files to tasks
+- flutter_screenutil: For responsive design and layout
 
----
-thanks for preview it 🥰
+## Code Organization
+
+The app's code is organized using the Model-View-Controller (MVC) pattern. The Model represents the app's data and business logic, the View is responsible for displaying the app's user interface, and the Controller handles user input and updates the Model and View as necessary.
+
+- `lib/models`: Contains the app's data models and business logic
+- `lib/views`: Contains the app's user interface code
+- `lib/controllers`: Contains the app's controllers, which handle user input and update the Model and View as necessary
+
+## Contributing
+
+Contributions to the Make It app are welcome! If you would like to contribute, please fork this repository and submit a pull request. Before submitting a pull request, please ensure that your code adheres to the existing code style and formatting guidelines.
+
+## License
+
+The Make It app is licensed under the MIT License. See the `LICENSE` file for more information.
+
+## Contact
+
+If you have any questions or feedback, please feel free to contact us at [mahmoudbadwysliem@gmail.com].
