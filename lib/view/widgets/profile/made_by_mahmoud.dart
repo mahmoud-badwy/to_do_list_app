@@ -16,7 +16,7 @@ class MadeByMahmoud extends StatelessWidget {
       ),
       textAlign: TextAlign.start,
       TextSpan(
-        text: 'This App make by ',
+        text: 'This App made by ',
         children: <TextSpan>[
           TextSpan(
             text: 'Mahmoud Badwy',

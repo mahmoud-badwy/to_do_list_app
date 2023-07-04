@@ -77,27 +77,39 @@ class SignUpPage extends StatelessWidget {
                 bottom: 15,
                 top: 15,
               ),
-              child: TextField(
-                controller: context
-                    .watch<SignInController>()
-                    .passwordTextEditingController,
-                decoration: InputDecoration(
-                  hintText: 'Password',
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      20,
+              child: Consumer<SignInController>(
+                builder: (BuildContext context, value, Widget? child) {
+                  return TextField(
+                    controller: value.passwordTextEditingController,
+                    keyboardType: TextInputType.visiblePassword,
+                    obscureText: value.obscurePassword,
+                    decoration: InputDecoration(
+                      hintText: 'Password',
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          20,
+                        ),
+                        borderSide:
+                            const BorderSide(width: 1.0, color: Colors.yellow),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          20,
+                        ),
+                        borderSide:
+                            BorderSide(width: 1.5, color: Colors.yellow[900]!),
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: value.obscureOnPressed,
+                        icon: Icon(
+                          value.obscurePassword
+                              ? Icons.visibility_rounded
+                              : Icons.visibility_off_rounded,
+                        ),
+                      ),
                     ),
-                    borderSide:
-                        const BorderSide(width: 1.0, color: Colors.yellow),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      20,
-                    ),
-                    borderSide:
-                        BorderSide(width: 1.5, color: Colors.yellow[900]!),
-                  ),
-                ),
+                  );
+                },
               ),
             ),
             MaterialButton(
